@@ -1,0 +1,51 @@
+name: in-car-violence-detection
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  # Python
+  - python=3.11.5
+  
+  # PyTorch (core from conda)
+  - pytorch==2.2.1
+  - torchvision==0.17.1
+  - torchaudio==2.2.1
+  - pytorch-cuda=11.8
+  
+  # Core scientific (from conda)
+  - numpy==1.24.4
+  - scipy==1.11.3
+  
+  # Utilities (from conda)
+  - pyyaml==6.0.1
+  - tqdm==4.66.1
+  
+  # pip for the rest
+  - pip>=23.0.0
+  
+  - pip:
+    # Pillow from pip (avoids libjpeg-turbo conflict)
+    - pillow==10.2.0
+    
+    # YOLOv8
+    - ultralytics==8.1.0
+    
+    # Face analysis
+    - insightface==0.7.3
+    - onnxruntime==1.16.3
+    
+    # OpenCV
+    - opencv-python==4.8.1.78
+    
+    # Augmentation
+    - albumentations==1.3.1
+    
+    # Additional
+    - matplotlib>=3.7.0
+    - seaborn>=0.12.0
+    - scikit-learn>=1.3.0
+    - pandas>=2.0.0
+    - jupyterlab>=4.0.0
+    - pytest>=7.4.0

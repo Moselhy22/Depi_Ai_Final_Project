@@ -1,0 +1,71 @@
+# Dataset locations - UPDATE THESE PATHS TO MATCH YOUR SYSTEM
+datasets:
+  violence_in_car:
+    name: "Violence in Car"
+    source: "Kaggle"
+    url: "https://www.kaggle.com/datasets/xuantin/violence-in-car"
+    raw_path: "data/raw/violence-in-car"
+    processed_path: "data/processed/violence_in_car"
+    classes:
+      - name: "NonViolence"
+        label: 0
+        path: "NonViolence"
+      - name: "Violence"
+        label: 1
+        path: "Violence"
+    video_extensions: [".mp4", ".avi", ".mov"]
+
+  scvd:
+    name: "Smart-City CCTV Violence Detection"
+    source: "Kaggle"
+    url: "https://www.kaggle.com/datasets/toluwaniaremu/smartcity-cctv-violence-detection-dataset-scvd"
+    raw_path: "data/raw/scvd"
+    processed_path: "data/processed/scvd"
+    classes:
+      - name: "NonViolence"
+        label: 0
+        path: "NonViolence"
+      - name: "Violence"
+        label: 1
+        path: "Violence"
+      - name: "Weapons"
+        label: 2
+        path: "Weapons"
+    video_extensions: [".mp4", ".avi", ".mov", ".mkv"]
+
+  guns_knives:
+    name: "Guns and Knives CCTV"
+    source: "Kaggle"
+    url: "https://www.kaggle.com/datasets/kruthisb999/guns-and-knifes-detection-in-cctv-videos"
+    raw_path: "data/raw/guns-knives-cctv"
+    processed_path: "data/processed/guns_knives"
+    base_dir: "combined_gunsnknifes"
+    classes:
+      - name: "guns"
+        label: 0
+        yolo_id: 0
+      - name: "knives"
+        label: 1
+        yolo_id: 1
+      - name: "background"
+        label: 2
+        yolo_id: 2
+    video_extensions: [".mp4", ".avi", ".mov"]
+
+# Preprocessing parameters
+preprocessing:
+  frame_size: [224, 224]
+  clip_length: 16
+  stride: 8
+  target_fps: 10
+  
+  violence:
+    train_ratio: 0.7
+    val_ratio: 0.15
+    test_ratio: 0.15
+    
+  weapon:
+    train_ratio: 0.8
+    val_ratio: 0.1
+    test_ratio: 0.1
+    extract_every_n_frames: 5

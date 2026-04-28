@@ -1,0 +1,61 @@
+# Violence Detection Training Configuration
+
+model:
+  name: "InCarViolenceDetector"
+  architecture: "cnn_lstm_attention"
+  backbone: "resnet50"
+  num_classes: 2
+  hidden_dim: 512
+  num_layers: 2
+  dropout: 0.5
+  bidirectional: true
+
+training:
+  epochs: 100
+  batch_size: 4
+  num_workers: 4
+  
+  optimizer:
+    name: "AdamW"
+    lr: 0.0001
+    weight_decay: 0.0001
+    betas: [0.9, 0.999]
+  
+  scheduler:
+    name: "OneCycleLR"
+    max_lr: 0.0001
+    pct_start: 0.3
+  
+  loss:
+    name: "CrossEntropyLoss"
+    class_weights: [1.0, 2.0]
+  
+  early_stopping:
+    patience: 15
+    monitor: "val_f1"
+    mode: "max"
+  
+  gradient_clipping:
+    max_norm: 1.0
+
+data:
+  mode: "combined"
+  clip_length: 16
+  frame_size: [224, 224]
+  
+  augmentation:
+    enabled: true
+    rotation: 15
+    horizontal_flip: 0.5
+    brightness: 0.2
+    contrast: 0.2
+
+hardware:
+  device: "cuda"
+  mixed_precision: true
+
+logging:
+  log_dir: "logs/violence"
+  checkpoint_dir: "models/checkpoints/violence"
+  save_every_n_epochs: 5
+  tensorboard: true

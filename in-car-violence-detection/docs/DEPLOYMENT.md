@@ -252,9 +252,3 @@ If you encounter issues:
 | Video     | Testing          | `--source video.mp4` |
 | Multi-Cam | Advanced systems | `--source 0 2 4`     |
 
----
-
-```
-
----
-``

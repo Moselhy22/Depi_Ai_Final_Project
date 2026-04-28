@@ -262,9 +262,4 @@ git commit -m "Training complete: violence + weapon models"
 | Violence Detection | `train_violence` | `.pth` model     |
 | Weapon Detection   | `train_weapon`   | YOLO `.pt` model |
 
----
-
-```
-
----
 

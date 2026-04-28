@@ -227,10 +227,5 @@ Real-time object detection using the **Ultralytics YOLOv8 framework**.
 | InCarViolenceDetector | Detect violent actions | Temporal understanding |
 | YOLOv8                | Detect weapons         | Real-time performance  |
 
----
-
-```
-
----
 
 

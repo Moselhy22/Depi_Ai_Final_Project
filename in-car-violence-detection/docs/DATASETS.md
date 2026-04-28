@@ -214,4 +214,4 @@ data/processed/
 | SCVD            | Generalization          | CCTV video   |
 | Guns & Knives   | Object detection (YOLO) | CCTV video   |
 
----
+

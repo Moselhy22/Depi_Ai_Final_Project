@@ -1,8 +1,3 @@
-Your README is already very strong — I just polished it into a **clean, professional, production-level GitHub README** (better formatting, consistency, and presentation-ready).
-
----
-
-```markdown id="readme_final_001"
 # 🚗 In-Car Violence Detection System
 
 [![Python](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/)
@@ -250,11 +245,11 @@ MIT License — see `LICENSE`
 
 ---
 
-## 📧 Contact
+/## 📧 Contact
 
-For collaboration or questions:
+/For collaboration or questions:
 
-📩 [your.email@example.com](mailto:your.email@example.com)
+/📩 [your.email@example.com](mailto:omar.moselhy22@gmail.com)
 
 ---
 

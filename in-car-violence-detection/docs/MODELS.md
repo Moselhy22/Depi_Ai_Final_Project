@@ -1,8 +1,3 @@
-Here’s your **professional, polished README-style version** of `MODELS.md` — clean, structured, and GitHub-ready:
-
----
-
-````markdown id="models_doc_001"
 # 🧠 Model Architectures
 
 This document provides a detailed overview of the machine learning models used in the **In-Car Violence Detection System**, including architecture design, configurations, and training strategies.

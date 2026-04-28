@@ -1,8 +1,3 @@
-Here’s your **professional, polished README-style version** of `TRAINING.md` — structured for clarity, real-world usability, and GitHub presentation:
-
----
-
-````markdown id="training_doc_001"
 # 🏋️ Training Guide
 
 This guide explains how to train the models used in the **In-Car Violence Detection System**, including setup, execution, monitoring, and troubleshooting.

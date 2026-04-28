@@ -1,8 +1,3 @@
-Here’s a **clean, professional README-style version** of your `DATASETS.md` — structured, polished, and suitable for GitHub:
-
----
-
-````markdown
 # 📊 Datasets Documentation
 
 This document provides a comprehensive overview of all datasets used in the **In-Car Violence Detection System**. It includes dataset sources, structure, usage, and preprocessing details.

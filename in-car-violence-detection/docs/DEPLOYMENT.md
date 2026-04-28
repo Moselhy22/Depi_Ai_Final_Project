@@ -1,8 +1,3 @@
-Here’s your **professional, production-ready README-style version** of `DEPLOYMENT.md` — polished for GitHub, demos, and your graduation project:
-
----
-
-````markdown id="deployment_doc_001"
 # 🚀 Deployment Guide
 
 This guide explains how to deploy the **In-Car Violence Detection System** in real-world scenarios, including setup, optimization, and system integration.

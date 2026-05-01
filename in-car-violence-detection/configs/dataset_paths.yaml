@@ -1,4 +1,4 @@
-# Dataset locations - UPDATE THESE PATHS TO MATCH YOUR SYSTEM
+# Dataset locations - UPDATED FOR ACTUAL DATA STRUCTURE
 datasets:
   violence_in_car:
     name: "Violence in Car"
@@ -7,30 +7,32 @@ datasets:
     raw_path: "data/raw/violence-in-car"
     processed_path: "data/processed/violence_in_car"
     classes:
-      - name: "NonViolence"
+      - name: "non_attack"
         label: 0
-        path: "NonViolence"
-      - name: "Violence"
+        path: "non_attack"
+      - name: "attack"
         label: 1
-        path: "Violence"
+        path: "attack"
+    splits: ["train", "val"]
     video_extensions: [".mp4", ".avi", ".mov"]
 
   scvd:
     name: "Smart-City CCTV Violence Detection"
     source: "Kaggle"
     url: "https://www.kaggle.com/datasets/toluwaniaremu/smartcity-cctv-violence-detection-dataset-scvd"
-    raw_path: "data/raw/scvd"
+    raw_path: "data/raw/SCVD/SCVD_converted"
     processed_path: "data/processed/scvd"
     classes:
-      - name: "NonViolence"
+      - name: "Normal"
         label: 0
-        path: "NonViolence"
+        path: "Normal"
       - name: "Violence"
         label: 1
         path: "Violence"
-      - name: "Weapons"
+      - name: "Weaponized"
         label: 2
-        path: "Weapons"
+        path: "Weaponized"
+    splits: ["Train", "Test"]
     video_extensions: [".mp4", ".avi", ".mov", ".mkv"]
 
   guns_knives:
@@ -39,18 +41,13 @@ datasets:
     url: "https://www.kaggle.com/datasets/kruthisb999/guns-and-knifes-detection-in-cctv-videos"
     raw_path: "data/raw/guns-knives-cctv"
     processed_path: "data/processed/guns_knives"
-    base_dir: "combined_gunsnknifes"
+    already_yolo: true
+    yolo_yaml: "data/raw/guns-knives-cctv/data.yaml"
     classes:
-      - name: "guns"
-        label: 0
+      - name: "pistol"
         yolo_id: 0
-      - name: "knives"
-        label: 1
+      - name: "knife"
         yolo_id: 1
-      - name: "background"
-        label: 2
-        yolo_id: 2
-    video_extensions: [".mp4", ".avi", ".mov"]
 
 # Preprocessing parameters
 preprocessing:

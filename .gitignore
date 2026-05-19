@@ -1,0 +1,4 @@
+
+# VD-MIL model weights (too large for GitHub)
+violence-detection-mil/models/checkpoints/violence/*.pt
+violence-detection-mil/movinet_weights/

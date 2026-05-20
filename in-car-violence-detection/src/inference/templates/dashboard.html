@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In-Car Violence Detection | Dashboard v1.5</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px 30px;
+            border-bottom: 2px solid #00ff88;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,255,136,0.1);
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: #00ff88;
+            letter-spacing: 2px;
+        }
+
+        .header .version {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00ff88;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        /* Video Panel */
+        .video-panel {
+            background: #1a1a2e;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #2a2a3e;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        .video-header {
+            padding: 15px 20px;
+            background: #16213e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .video-header h3 {
+            color: #00d4ff;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .fps-badge {
+            background: #0f3460;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #00ff88;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            background: #000;
+        }
+
+        .video-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Side Panel */
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Threat Card */
+        .threat-card {
+            background: #1a1a2e;
+            border-radius: 16px;
+            padding: 25px;
+            border: 2px solid #2a2a3e;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .threat-card.critical { border-color: #ff3333; box-shadow: 0 0 30px rgba(255,51,51,0.3); }
+        .threat-card.warning { border-color: #ff9500; box-shadow: 0 0 30px rgba(255,149,0,0.3); }
+        .threat-card.watch { border-color: #ffd93d; box-shadow: 0 0 30px rgba(255,217,61,0.3); }
+        .threat-card.normal { border-color: #00ff88; box-shadow: 0 0 30px rgba(0,255,136,0.3); }
+
+        .threat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .threat-value {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 3px;
+        }
+
+        .threat-value.critical { color: #ff3333; }
+        .threat-value.warning { color: #ff9500; }
+        .threat-value.watch { color: #ffd93d; }
+        .threat-value.normal { color: #00ff88; }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .metric-box {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #2a2a3e;
+        }
+
+        .metric-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .metric-label {
+            font-size: 11px;
+            color: #888;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+
+        /* Violence Meter */
+        .meter-container {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a2a3e;
+        }
+
+        .meter-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .meter-bar {
+            height: 20px;
+            background: #0a0a0f;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .meter-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease, background 0.5s ease;
+            background: linear-gradient(90deg, #00ff88, #ffd93d, #ff9500, #ff3333);
+        }
+
+        .meter-value {
+            text-align: right;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            background: #1a1a2e;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #2a2a3e;
+        }
+
+        .chart-container h3 {
+            color: #00d4ff;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Alert Feed */
+        .alert-feed {
+            background: #1a1a2e;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid #2a2a3e;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .alert-feed h3 {
+            color: #00d4ff;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .alert-item {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid;
+            background: #16213e;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .alert-item.critical { border-left-color: #ff3333; }
+        .alert-item.warning { border-left-color: #ff9500; }
+        .alert-item.watch { border-left-color: #ffd93d; }
+        .alert-item.normal { border-left-color: #00ff88; }
+
+        .alert-time {
+            font-size: 11px;
+            color: #888;
+        }
+
+        .alert-text {
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .alert-score {
+            font-size: 11px;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: #16213e;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #2a2a3e;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a3e;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3a4e;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div>
+            <h1>IN-CAR VIOLENCE DETECTION</h1>
+            <span class="version">Dashboard v1.5 | Real-Time Monitoring</span>
+        </div>
+        <div class="status-indicator">
+            <div class="status-dot" id="statusDot"></div>
+            <span id="statusText">LIVE</span>
+        </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="main-grid">
+        <!-- Left Column -->
+        <div class="left-column">
+            <!-- Video Panel -->
+            <div class="video-panel">
+                <div class="video-header">
+                    <h3>Live Camera Feed</h3>
+                    <span class="fps-badge" id="fpsBadge">FPS: --</span>
+                </div>
+                <div class="video-container">
+                    <img src="/video_feed" alt="Live Feed">
+                </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalFrames" style="color: #00d4ff;">0</div>
+                    <div class="stat-label">Total Frames</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="violenceFrames" style="color: #ff9500;">0</div>
+                    <div class="stat-label">Violence Frames</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="weaponFrames" style="color: #ffd93d;">0</div>
+                    <div class="stat-label">Weapon Frames</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="criticalCount" style="color: #ff3333;">0</div>
+                    <div class="stat-label">Critical Alerts</div>
+                </div>
+            </div>
+
+            <!-- Violence History Chart -->
+            <div class="chart-container" style="margin-top: 20px;">
+                <h3>Violence Probability History</h3>
+                <canvas id="violenceChart" height="80"></canvas>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="side-panel">
+            <!-- Threat Level -->
+            <div class="threat-card normal" id="threatCard">
+                <div class="threat-label">Current Threat Level</div>
+                <div class="threat-value normal" id="threatValue">NORMAL</div>
+            </div>
+
+            <!-- Metrics -->
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <div class="metric-value" id="violenceScore">0.00</div>
+                    <div class="metric-label">Violence Score</div>
+                </div>
+                <div class="metric-box">
+                    <div class="metric-value" id="weaponCount">0</div>
+                    <div class="metric-label">Weapons</div>
+                </div>
+            </div>
+
+            <!-- Violence Meter -->
+            <div class="meter-container">
+                <div class="meter-header">
+                    <span style="font-size: 12px; color: #888;">Threat Meter</span>
+                    <span style="font-size: 12px; color: #00ff88;" id="meterPercent">0%</span>
+                </div>
+                <div class="meter-bar">
+                    <div class="meter-fill" id="meterFill" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Alert Feed -->
+            <div class="alert-feed">
+                <h3>Alert History</h3>
+                <div id="alertContainer">
+                    <div class="alert-item normal">
+                        <div class="alert-time">--:--:--</div>
+                        <div class="alert-text">System initialized</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart.js setup
+        const ctx = document.getElementById('violenceChart').getContext('2d');
+        const violenceChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array(50).fill(''),
+                datasets: [{
+                    label: 'Violence Score',
+                    data: Array(50).fill(0),
+                    borderColor: '#00ff88',
+                    backgroundColor: 'rgba(0,255,136,0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { display: false },
+                    y: { 
+                        min: 0, 
+                        max: 1, 
+                        grid: { color: '#2a2a3e' },
+                        ticks: { color: '#888', font: { size: 10 } }
+                    }
+                },
+                animation: { duration: 0 }
+            }
+        });
+
+        // Update dashboard
+        async function updateDashboard() {
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+
+                // Update threat card
+                const threatCard = document.getElementById('threatCard');
+                const threatValue = document.getElementById('threatValue');
+                threatCard.className = 'threat-card ' + data.threat_name.toLowerCase();
+                threatValue.className = 'threat-value ' + data.threat_name.toLowerCase();
+                threatValue.textContent = data.threat_name;
+
+                // Update metrics
+                document.getElementById('violenceScore').textContent = data.violence_score.toFixed(3);
+                document.getElementById('weaponCount').textContent = data.weapon_count;
+                document.getElementById('fpsBadge').textContent = 'FPS: ' + data.fps;
+
+                // Update meter
+                const percent = Math.round(data.violence_score * 100);
+                document.getElementById('meterFill').style.width = percent + '%';
+                document.getElementById('meterPercent').textContent = percent + '%';
+
+                // Update stats
+                document.getElementById('totalFrames').textContent = data.stats.total_frames;
+                document.getElementById('violenceFrames').textContent = data.stats.violence_frames;
+                document.getElementById('weaponFrames').textContent = data.stats.weapon_frames;
+                document.getElementById('criticalCount').textContent = data.stats.critical_alerts;
+
+                // Update chart
+                if (data.violence_history && data.violence_history.length > 0) {
+                    violenceChart.data.datasets[0].data = data.violence_history.slice(-50);
+                    violenceChart.data.datasets[0].borderColor = data.threat_color;
+                    violenceChart.data.datasets[0].backgroundColor = data.threat_color + '20';
+                    violenceChart.update('none');
+                }
+
+                // Update alerts
+                const alertContainer = document.getElementById('alertContainer');
+                alertContainer.innerHTML = '';
+                data.alerts.forEach(alert => {
+                    const div = document.createElement('div');
+                    div.className = 'alert-item ' + alert.name.toLowerCase();
+                    div.innerHTML = `
+                        <div class="alert-time">${alert.timestamp}</div>
+                        <div class="alert-text">[${alert.name}] ${alert.reason}</div>
+                        <div class="alert-score">Score: ${alert.violence_score}</div>
+                    `;
+                    alertContainer.appendChild(div);
+                });
+
+            } catch (error) {
+                console.error('Update error:', error);
+            }
+        }
+
+        // Update every 500ms
+        setInterval(updateDashboard, 500);
+    </script>
+</body>
+</html>

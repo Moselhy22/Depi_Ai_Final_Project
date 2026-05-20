@@ -1,0 +1,27 @@
+# In-Car Violence Detection System - Requirements
+# Version 1.0
+# CRITICAL: Do NOT upgrade numpy to 2.x - it breaks PyTorch 2.2.1
+
+# Core ML
+torch==2.2.1
+torchvision==0.17.1
+
+# Computer Vision
+ultralytics==8.1.0
+opencv-python==4.8.1.78
+
+# Scientific Computing
+numpy==1.24.4
+
+# Evaluation & Metrics
+scikit-learn
+matplotlib
+seaborn
+
+# Video Processing
+imageio
+imageio-ffmpeg
+
+# Utilities
+pyyaml
+tqdm

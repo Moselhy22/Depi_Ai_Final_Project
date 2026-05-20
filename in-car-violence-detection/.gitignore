@@ -70,3 +70,4 @@ Thumbs.db
 tmp/
 temp/
 *.tmp
+movinet_weights/

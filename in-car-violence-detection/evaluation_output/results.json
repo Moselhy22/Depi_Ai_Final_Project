@@ -1,0 +1,367 @@
+{
+  "accuracy": 0.8275862068965517,
+  "precision": 0.625,
+  "recall": 0.4166666666666667,
+  "f1": 0.5,
+  "auc": 0.7554347826086956,
+  "confusion_matrix": [
+    [
+      43,
+      3
+    ],
+    [
+      7,
+      5
+    ]
+  ],
+  "details": [
+    {
+      "video": "t_v010_converted.avi",
+      "true_label": 1,
+      "predicted": 1,
+      "probability": 0.7658346534214515
+    },
+    {
+      "video": "t_v007_converted.avi",
+      "true_label": 1,
+      "predicted": 1,
+      "probability": 0.7421933184086811
+    },
+    {
+      "video": "t_v008_converted.avi",
+      "true_label": 1,
+      "predicted": 0,
+      "probability": 0.42788205887264913
+    },
+    {
+      "video": "t_v002_converted.avi",
+      "true_label": 1,
+      "predicted": 1,
+      "probability": 0.7123470760394479
+    },
+    {
+      "video": "t_v001_converted.avi",
+      "true_label": 1,
+      "predicted": 0,
+      "probability": 0.09260838240038465
+    },
+    {
+      "video": "t_v012_converted.avi",
+      "true_label": 1,
+      "predicted": 1,
+      "probability": 0.8339929445097165
+    },
+    {
+      "video": "t_v003_converted.avi",
+      "true_label": 1,
+      "predicted": 0,
+      "probability": 0.10288163637667294
+    },
+    {
+      "video": "t_v011_converted.avi",
+      "true_label": 1,
+      "predicted": 0,
+      "probability": 0.2604665611084783
+    },
+    {
+      "video": "t_v006_converted.avi",
+      "true_label": 1,
+      "predicted": 1,
+      "probability": 0.9635600865833343
+    },
+    {
+      "video": "t_v009_converted.avi",
+      "true_label": 1,
+      "predicted": 0,
+      "probability": 0.22314872218388748
+    },
+    {
+      "video": "t_v005_converted.avi",
+      "true_label": 1,
+      "predicted": 0,
+      "probability": 0.04563324270160729
+    },
+    {
+      "video": "t_v004_converted.avi",
+      "true_label": 1,
+      "predicted": 0,
+      "probability": 0.356769089216073
+    },
+    {
+      "video": "t_n002_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.03276662340380904
+    },
+    {
+      "video": "t_n005_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.13995606677261613
+    },
+    {
+      "video": "t_n030_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.2506850534030851
+    },
+    {
+      "video": "t_n039_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.0015992559993980766
+    },
+    {
+      "video": "t_n003_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.0013534064446999268
+    },
+    {
+      "video": "t_n046_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.0015838618642151916
+    },
+    {
+      "video": "t_n032_converted.avi",
+      "true_label": 0,
+      "predicted": 1,
+      "probability": 0.8639280902302784
+    },
+    {
+      "video": "t_n024_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.14613141927678705
+    },
+    {
+      "video": "t_n044_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.0044938524723307696
+    },
+    {
+      "video": "t_n036_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.2123798223317794
+    },
+    {
+      "video": "t_n015_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.3470592751776374
+    },
+    {
+      "video": "t_n025_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.14261656736626344
+    },
+    {
+      "video": "t_n028_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.13732262805217144
+    },
+    {
+      "video": "t_n037_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.24175603315234184
+    },
+    {
+      "video": "t_n012_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.177470557670477
+    },
+    {
+      "video": "t_n017_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.16841214482050276
+    },
+    {
+      "video": "t_n011_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.14950223232529336
+    },
+    {
+      "video": "t_n020_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.21222455250945957
+    },
+    {
+      "video": "t_n008_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.11760385812522145
+    },
+    {
+      "video": "t_n033_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.2152859210229117
+    },
+    {
+      "video": "t_n043_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.007383820264496737
+    },
+    {
+      "video": "t_n042_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.019670238045153925
+    },
+    {
+      "video": "t_n004_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.004593335548997856
+    },
+    {
+      "video": "t_n027_converted.avi",
+      "true_label": 0,
+      "predicted": 1,
+      "probability": 0.5746436546157513
+    },
+    {
+      "video": "t_n034_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.2144171553589995
+    },
+    {
+      "video": "t_n041_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.0013346392967040657
+    },
+    {
+      "video": "t_n018_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.45252161021803466
+    },
+    {
+      "video": "t_n001_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.002735542423502242
+    },
+    {
+      "video": "t_n023_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.24156056927009062
+    },
+    {
+      "video": "t_n006_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.1714009122593173
+    },
+    {
+      "video": "t_n021_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.2043110732275706
+    },
+    {
+      "video": "t_n009_converted.avi",
+      "true_label": 0,
+      "predicted": 1,
+      "probability": 0.5364718324367385
+    },
+    {
+      "video": "t_n022_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.17169240961472193
+    },
+    {
+      "video": "t_n035_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.23272824784119925
+    },
+    {
+      "video": "t_n013_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.3511406168779076
+    },
+    {
+      "video": "t_n045_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.004080307465458112
+    },
+    {
+      "video": "t_n016_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.3081795785414136
+    },
+    {
+      "video": "t_n029_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.16532385808726152
+    },
+    {
+      "video": "t_n040_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.001187461602505267
+    },
+    {
+      "video": "t_n010_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.2096773467954419
+    },
+    {
+      "video": "t_n026_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.11945334274483764
+    },
+    {
+      "video": "t_n031_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.1919869672611495
+    },
+    {
+      "video": "t_n038_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.04515494942695888
+    },
+    {
+      "video": "t_n007_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.4943721043115312
+    },
+    {
+      "video": "t_n014_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.25320646191875523
+    },
+    {
+      "video": "t_n019_converted.avi",
+      "true_label": 0,
+      "predicted": 0,
+      "probability": 0.24355890833347746
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Dataset (too large for GitHub — download via script)
+data/train/
+data/valid/
+data/test/
+data/*.cache
+*.cache
+
+# Trained weights (too large for GitHub — use Git LFS or download)
+models/
+runs/
+yolo11n.pt
+yolo11s.pt
+*.pt
+
+# Logs
+logs/*.db
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user

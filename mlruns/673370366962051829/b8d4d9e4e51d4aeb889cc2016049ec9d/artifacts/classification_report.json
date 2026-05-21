@@ -1,0 +1,69 @@
+{
+    "Safe Driving": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 46.0
+    },
+    "Texting Right": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 48.0
+    },
+    "Smoking": {
+        "precision": 0.9859154929577465,
+        "recall": 1.0,
+        "f1-score": 0.9929078014184397,
+        "support": 70.0
+    },
+    "Phone Call Right": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 72.0
+    },
+    "Texting Left": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 62.0
+    },
+    "Phone Call Left": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 55.0
+    },
+    "Headphones": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 70.0
+    },
+    "Drinking": {
+        "precision": 1.0,
+        "recall": 0.9811320754716981,
+        "f1-score": 0.9904761904761905,
+        "support": 53.0
+    },
+    "Talking Passenger": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 64.0
+    },
+    "accuracy": 0.9981481481481481,
+    "macro avg": {
+        "precision": 0.9984350547730829,
+        "recall": 0.9979035639412999,
+        "f1-score": 0.9981537768771811,
+        "support": 540.0
+    },
+    "weighted avg": {
+        "precision": 0.9981742305685969,
+        "recall": 0.9981481481481481,
+        "f1-score": 0.998145896656535,
+        "support": 540.0
+    }
+}

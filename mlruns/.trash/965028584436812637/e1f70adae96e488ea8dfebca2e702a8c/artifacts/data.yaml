@@ -1,0 +1,8 @@
+names:
+- cigarette
+- vape
+nc: 2
+path: D:\DEPI GP\data\roboflow_yolo_ds\merged
+test: test/images
+train: train/images
+val: valid/images

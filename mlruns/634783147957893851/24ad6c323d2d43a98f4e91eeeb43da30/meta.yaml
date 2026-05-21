@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/DEPI GP/mlruns/634783147957893851/24ad6c323d2d43a98f4e91eeeb43da30/artifacts
+end_time: 1779292075129
+entry_point_name: ''
+experiment_id: '634783147957893851'
+lifecycle_stage: active
+run_id: 24ad6c323d2d43a98f4e91eeeb43da30
+run_name: resume_finetuning
+run_uuid: 24ad6c323d2d43a98f4e91eeeb43da30
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779292073828
+status: 3
+tags: []
+user_id: LAPTOP

@@ -1,0 +1,16 @@
+artifact_uri: file:///D:/DEPI%20GP/mlruns/629713416607453253/649d3ef53ab244a4b4af27ab6d69cbc9/artifacts
+deleted_time: 1779065000479
+end_time: null
+entry_point_name: ''
+experiment_id: '629713416607453253'
+lifecycle_stage: deleted
+run_id: 649d3ef53ab244a4b4af27ab6d69cbc9
+run_name: yolov8n_smoking
+run_uuid: 649d3ef53ab244a4b4af27ab6d69cbc9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779053748851
+status: 1
+tags: []
+user_id: LAPTOP

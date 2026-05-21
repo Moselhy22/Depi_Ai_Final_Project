@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/DEPI%20GP/mlruns/673370366962051829/bce02b81687b4cbe9a4411b335013bd6/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '673370366962051829'
+lifecycle_stage: active
+run_id: bce02b81687b4cbe9a4411b335013bd6
+run_name: yolov8n_finetuned
+run_uuid: bce02b81687b4cbe9a4411b335013bd6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779140507164
+status: 1
+tags: []
+user_id: LAPTOP

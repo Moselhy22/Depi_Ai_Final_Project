@@ -1,0 +1,16 @@
+artifact_uri: file:///D:/DEPI GP/mlruns/354620169020742113/37faa0e785c94bccb01eb541eb998779/artifacts
+deleted_time: 1779199026322
+end_time: 1779150441402
+entry_point_name: ''
+experiment_id: '354620169020742113'
+lifecycle_stage: deleted
+run_id: 37faa0e785c94bccb01eb541eb998779
+run_name: driver_distraction_yolov8n
+run_uuid: 37faa0e785c94bccb01eb541eb998779
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779150128017
+status: 4
+tags: []
+user_id: LAPTOP

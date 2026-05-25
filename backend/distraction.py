@@ -1,7 +1,6 @@
 import cv2
 import threading
 import time
-from ultralytics import YOLO
 
 YOLO_PATH = r"D:\DEPI GP\runs\detect\train-6\weights\best.pt"
 
@@ -25,22 +24,26 @@ LABEL_COLORS = {
     "Drink": (0, 255, 255),
 }
 
-
-def _load_yolo():
-
-    print("\nLOADING YOLO MODEL...\n")
-
-    model = YOLO(YOLO_PATH)
-
-    print("MODEL LOADED SUCCESSFULLY\n")
-
-    return model
+# ── Lazy YOLO loading (NOT at module level — prevents server hang) ──
+_yolo_model = None
+_yolo_lock = threading.Lock()
 
 
-yolo_model = _load_yolo()
+def _get_yolo():
+    global _yolo_model
+    if _yolo_model is not None:
+        return _yolo_model
+    with _yolo_lock:
+        if _yolo_model is not None:
+            return _yolo_model
+        print("\n[DESTRACTION] Loading YOLO model...\n")
+        from ultralytics import YOLO
+        _yolo_model = YOLO(YOLO_PATH)
+        print("[DESTRACTION] Model loaded successfully.\n")
+        print("MODEL CLASSES:")
+        print(_yolo_model.names)
+        return _yolo_model
 
-print("\nMODEL CLASSES:\n")
-print(yolo_model.names)
 
 _state_lock = threading.Lock()
 
@@ -57,16 +60,16 @@ _consec_distracted = 0
 
 
 def get_latest_state():
-
     with _state_lock:
         return dict(_latest_state)
 
 
 def detect_distraction(frame):
-
     global _consec_distracted
 
-    results = yolo_model(
+    model = _get_yolo()
+
+    results = model(
         frame,
         verbose=False,
         conf=CONF_THRESHOLD_YOLO,
@@ -76,7 +79,6 @@ def detect_distraction(frame):
     yolo_dets = []
 
     for box in results.boxes:
-
         cls_name = results.names[
             int(box.cls.item())
         ].lower()
@@ -125,7 +127,6 @@ def detect_distraction(frame):
     detections = []
 
     for d in yolo_dets:
-
         detections.append({
             "label": d["label"],
             "class_id": d["raw_label"],
@@ -135,7 +136,6 @@ def detect_distraction(frame):
         })
 
     if not detections:
-
         detections.append({
             "label": "Safe Driving",
             "class_id": "safe",
@@ -145,19 +145,13 @@ def detect_distraction(frame):
         })
 
     with _state_lock:
-
         _latest_state["distracted"] = is_confirmed
-
         _latest_state["label"] = (
             main_label.lower()
         )
-
         _latest_state["display"] = main_label
-
         _latest_state["confidence"] = main_conf
-
         _latest_state["detections"] = detections
-
         _latest_state["timestamp"] = time.strftime(
             "%Y-%m-%d %H:%M:%S"
         )
@@ -165,14 +159,11 @@ def detect_distraction(frame):
     annotated = frame.copy()
 
     for d in yolo_dets:
-
         x1, y1, x2, y2 = d["bbox"]
-
         color = LABEL_COLORS.get(
             d["label"],
             (0, 0, 255)
         )
-
         box_color = (
             (0, 0, 255)
             if is_confirmed
@@ -245,45 +236,32 @@ def detect_distraction(frame):
 
 
 if __name__ == "__main__":
-
     cap = cv2.VideoCapture(0)
-
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
-
     print("\nPRESS Q TO EXIT\n")
-
     while True:
-
         ret, frame = cap.read()
-
         if not ret:
             break
-
         annotated, dets, distracted = (
             detect_distraction(frame)
         )
-
         labels = [
             d["class_id"]
             for d in dets
             if d.get("is_distraction")
         ]
-
         print(
             f"\r{' | '.join(labels) or 'Safe'} "
             f"| confirmed={distracted}",
             end=""
         )
-
         cv2.imshow(
             "Driver Distraction Detection",
             annotated
         )
-
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
-
     cap.release()
-
     cv2.destroyAllWindows()

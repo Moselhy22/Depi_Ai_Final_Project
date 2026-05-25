@@ -1,0 +1,101 @@
+[
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 19:11:05",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 1,
+        "alert": "WARNING: Weapon drawn"
+    },
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 19:11:36",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 1,
+        "alert": "WARNING: Weapon drawn"
+    },
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 19:12:07",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 1,
+        "alert": "WARNING: Weapon drawn"
+    },
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 19:12:38",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 3,
+        "alert": "WARNING: Weapon drawn"
+    },
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 20:12:32",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 1,
+        "alert": "WARNING: Weapon drawn"
+    },
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 20:41:55",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 1,
+        "alert": "WARNING: Weapon drawn"
+    },
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 20:42:35",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 1,
+        "alert": "WARNING: Weapon drawn"
+    },
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 21:20:15",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 2,
+        "alert": "WARNING: Weapon drawn"
+    },
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 22:30:44",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 1,
+        "alert": "WARNING: Weapon drawn"
+    },
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 22:43:46",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 2,
+        "alert": "WARNING: Weapon drawn"
+    },
+    {
+        "user": "aya",
+        "timestamp": "2026-05-25 22:51:44",
+        "threat_level": 2,
+        "threat_name": "WARNING",
+        "violence_score": 0.0,
+        "weapon_count": 2,
+        "alert": "WARNING: Weapon drawn"
+    }
+]

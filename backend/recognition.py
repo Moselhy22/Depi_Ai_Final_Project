@@ -19,7 +19,6 @@ def _init_app():
         fa = FaceAnalysis(name="buffalo_l", root=LOCAL_MODEL)
     except Exception:
         fa = FaceAnalysis(name="buffalo_l")
-    # det_size=320 → ~4x faster than 640, still accurate enough
     fa.prepare(ctx_id=-1, det_size=(320, 320), det_thresh=0.5)
     return fa
 

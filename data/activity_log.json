@@ -682,5 +682,929 @@
         "action": "distraction",
         "details": "Phone, Smoking detected",
         "timestamp": "2026-05-20 21:35:06"
+    },
+    {
+        "user": "Star",
+        "action": "register",
+        "details": "User registered successfully",
+        "timestamp": "2026-05-21 23:02:16"
+    },
+    {
+        "user": "star",
+        "action": "login",
+        "details": "Welcome star!",
+        "timestamp": "2026-05-21 23:02:30"
+    },
+    {
+        "user": "star",
+        "action": "distraction",
+        "details": "Phone detected",
+        "timestamp": "2026-05-21 23:05:52"
+    },
+    {
+        "user": "star",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-21 23:06:22"
+    },
+    {
+        "user": "star",
+        "action": "distraction",
+        "details": "Phone detected",
+        "timestamp": "2026-05-21 23:07:00"
+    },
+    {
+        "user": "star",
+        "action": "distraction",
+        "details": "Phone, Smoking detected",
+        "timestamp": "2026-05-21 23:07:30"
+    },
+    {
+        "user": "star",
+        "action": "distraction",
+        "details": "Smoking, Phone detected",
+        "timestamp": "2026-05-21 23:08:03"
+    },
+    {
+        "user": "star",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-21 23:08:39"
+    },
+    {
+        "user": "star",
+        "action": "distraction",
+        "details": "Phone detected",
+        "timestamp": "2026-05-21 23:09:14"
+    },
+    {
+        "user": "star",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-21 23:09:47"
+    },
+    {
+        "user": "aya",
+        "action": "register",
+        "details": "User registered successfully",
+        "timestamp": "2026-05-21 23:16:22"
+    },
+    {
+        "user": "star",
+        "action": "login",
+        "details": "Welcome star!",
+        "timestamp": "2026-05-21 23:16:40"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Identity mismatch",
+        "timestamp": "2026-05-21 23:17:00"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-21 23:17:14"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Phone detected",
+        "timestamp": "2026-05-21 23:17:20"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-21 23:17:50"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Phone, Smoking detected",
+        "timestamp": "2026-05-21 23:18:21"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-22 13:56:39"
+    },
+    {
+        "user": "Aya",
+        "action": "register",
+        "details": "User registered successfully",
+        "timestamp": "2026-05-22 14:28:58"
+    },
+    {
+        "user": "Aya",
+        "action": "login",
+        "details": "Welcome Aya!",
+        "timestamp": "2026-05-22 14:29:29"
+    },
+    {
+        "user": "Aya",
+        "action": "login",
+        "details": "Identity mismatch",
+        "timestamp": "2026-05-22 14:29:47"
+    },
+    {
+        "user": "Aya",
+        "action": "login",
+        "details": "Welcome Aya!",
+        "timestamp": "2026-05-22 14:30:08"
+    },
+    {
+        "user": "Aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-22 14:30:43"
+    },
+    {
+        "user": "Aya",
+        "action": "distraction",
+        "details": "Phone, Smoking detected",
+        "timestamp": "2026-05-22 14:31:16"
+    },
+    {
+        "user": "aya",
+        "action": "register",
+        "details": "User registered successfully",
+        "timestamp": "2026-05-24 19:55:24"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-24 19:55:41"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-24 20:36:27"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "No face detected",
+        "timestamp": "2026-05-24 20:36:34"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-24 20:36:41"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-24 20:36:51"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-24 20:42:49"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-24 20:42:59"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-24 20:46:10"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-24 20:47:50"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-24 21:05:13"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Identity mismatch",
+        "timestamp": "2026-05-24 21:05:25"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-24 21:05:30"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-24 21:30:01"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-24 21:32:15"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-24 21:39:46"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-24 21:42:09"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Phone detected",
+        "timestamp": "2026-05-24 21:42:55"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-24 21:43:42"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-24 21:43:56"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-24 21:44:35"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-24 21:45:31"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 15:53:49"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 15:53:54"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 15:53:56"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 15:53:58"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 15:54:00"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 15:54:03"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 15:54:07"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 15:54:09"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 15:54:24"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:03:30"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-25 16:03:50"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Phone, Phone detected",
+        "timestamp": "2026-05-25 16:04:20"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:04:58"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:05:39"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 16:32:01"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 16:32:08"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 16:32:16"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:34:51"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-25 16:34:58"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:35:21"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:35:56"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:36:34"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:37:04"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:37:34"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:38:04"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:38:34"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-25 16:38:51"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:39:04"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:39:34"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:40:04"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:40:34"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:41:04"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:41:34"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:42:04"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:42:35"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 16:44:49"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 16:44:55"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 17:21:34"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 17:26:39"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 19:09:25"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 19:09:29"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Identity mismatch",
+        "timestamp": "2026-05-25 19:09:35"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Identity mismatch",
+        "timestamp": "2026-05-25 19:09:36"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Identity mismatch",
+        "timestamp": "2026-05-25 19:09:40"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Identity mismatch",
+        "timestamp": "2026-05-25 19:09:44"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 19:09:50"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 19:10:02"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 19:10:07"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 19:11:05"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 19:11:05"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-25 19:11:23"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 19:11:35"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 19:11:36"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 19:12:07"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 19:12:10"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-25 19:12:16"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 19:12:38"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-25 19:12:53"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 20:04:45"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 20:08:55"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-25 20:10:25"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking, Smoking detected",
+        "timestamp": "2026-05-25 20:10:56"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 20:11:15"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-25 20:11:26"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 20:12:01"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 20:12:32"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 20:38:08"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 20:40:24"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-25 20:40:33"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-25 20:41:06"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 20:41:12"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-25 20:41:36"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 20:41:55"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-25 20:42:09"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 20:42:35"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Phone detected",
+        "timestamp": "2026-05-25 20:42:51"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 21:03:51"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 21:03:53"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 21:08:21"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 21:08:28"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 21:08:53"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 21:15:13"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Spoof detected \u2014 use a real face",
+        "timestamp": "2026-05-25 21:15:22"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 21:15:34"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 21:15:57"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 21:16:16"
+    },
+    {
+        "user": "aya",
+        "action": "register",
+        "details": "User registered successfully",
+        "timestamp": "2026-05-25 21:17:52"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 21:18:04"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking, Smoking detected",
+        "timestamp": "2026-05-25 21:19:23"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 21:19:37"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 21:20:16"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-25 21:20:45"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Identity mismatch",
+        "timestamp": "2026-05-25 21:41:06"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 21:41:12"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 21:41:18"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 21:41:24"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 22:24:28"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 22:28:44"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-25 22:29:18"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 22:29:38"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 22:30:44"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 22:40:36"
+    },
+    {
+        "user": "aya",
+        "action": "drowsiness",
+        "details": "DROWSY - DROWSY - Eyes closing!",
+        "timestamp": "2026-05-25 22:42:20"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Drink detected",
+        "timestamp": "2026-05-25 22:42:40"
+    },
+    {
+        "user": "aya",
+        "action": "distraction",
+        "details": "Smoking detected",
+        "timestamp": "2026-05-25 22:43:10"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 22:43:46"
+    },
+    {
+        "user": "aya",
+        "action": "login",
+        "details": "Welcome aya!",
+        "timestamp": "2026-05-25 22:49:05"
+    },
+    {
+        "user": "aya",
+        "action": "violence_weapon",
+        "details": "WARNING - WARNING: Weapon drawn",
+        "timestamp": "2026-05-25 22:51:45"
     }
 ]

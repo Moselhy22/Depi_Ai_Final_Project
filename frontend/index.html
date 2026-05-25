@@ -17,9 +17,12 @@
     --info: #00d4ff;
     --warning: #ffa502;
     --warning-glow: rgba(255,165,2,0.4);
+    --purple: #a855f7;
+    --purple-glow: rgba(168,85,247,0.4);
     --card: rgba(17,24,39,0.7);
     --border: rgba(255,255,255,0.08);
     --glass: rgba(255,255,255,0.03);
+    --red-deep: #e84118;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
@@ -40,7 +43,7 @@ body{
 .grid-pattern{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse at center,black 20%,transparent 70%);}
 
 /* ── Container ── */
-.container{width:94%;max-width:960px;position:relative;z-index:10;text-align:center;}
+.container{width:94%;max-width:1100px;position:relative;z-index:10;text-align:center;}
 .card{background:var(--card);padding:48px 40px;border-radius:24px;backdrop-filter:blur(20px);border:1px solid var(--border);box-shadow:0 25px 50px -12px rgba(0,0,0,.5),0 0 100px -20px var(--accent-glow);position:relative;overflow:hidden;animation:cardAppear .6s cubic-bezier(.16,1,.3,1);}
 .section{display:none;}.section.active{display:block;}
 @keyframes cardAppear{from{opacity:0;transform:translateY(30px) scale(.96);}to{opacity:1;transform:translateY(0) scale(1);}}
@@ -76,22 +79,24 @@ select option{background:var(--bg-secondary);}
 .btn:hover{transform:translateY(-2px);}
 .btn-login    {background:linear-gradient(135deg,var(--accent),#00c896);color:var(--bg);box-shadow:0 8px 30px -8px var(--accent-glow);}
 .btn-register {background:linear-gradient(135deg,var(--info),#00a8cc);color:var(--bg);box-shadow:0 8px 30px -8px rgba(0,212,255,.4);}
-.btn-admin    {background:linear-gradient(135deg,var(--danger),#e84118);color:#fff;box-shadow:0 8px 30px -8px rgba(255,71,87,.4);}
+.btn-admin    {background:linear-gradient(135deg,var(--danger),var(--red-deep));color:#fff;box-shadow:0 8px 30px -8px rgba(255,71,87,.4);}
 .btn-distraction{background:linear-gradient(135deg,var(--warning),#e67e00);color:var(--bg);box-shadow:0 8px 30px -8px var(--warning-glow);}
+.btn-violence  {background:linear-gradient(135deg,var(--danger),var(--red-deep));color:#fff;box-shadow:0 8px 30px -8px rgba(255,71,87,.4);}
 .btn-danger-outline{background:transparent;color:var(--danger);border:1px solid var(--danger);}
 .btn-danger-outline:hover{background:var(--danger);color:#fff;}
 .btn-back{background:transparent;color:var(--muted);border:1px solid var(--border);margin-top:24px;max-width:200px;padding:12px 20px;font-size:14px;}
 .btn-back:hover{color:var(--fg);border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.05);}
+.btn-capture{background:linear-gradient(135deg,var(--accent),#00c896);color:var(--bg);box-shadow:0 8px 30px -8px var(--accent-glow);display:none;}
 
 /* ── Video & Status ── */
-.video-container{position:relative;margin:28px auto;max-width:320px;border-radius:20px;overflow:hidden;}
-.video-frame{position:relative;border-radius:20px;overflow:hidden;border:2px solid var(--accent);box-shadow:0 0 30px -5px var(--accent-glow);background:#000;}
-video{width:100%;display:block;background:#000;border-radius:18px;}
-.result-image{width:100%;display:none;border-radius:18px;}
+.video-container{position:relative;margin:28px auto;max-width:380px;border-radius:20px;overflow:hidden;}
+.video-frame{position:relative;border-radius:20px;overflow:hidden;border:2px solid var(--accent);box-shadow:0 0 30px -5px var(--accent-glow);background:#000;width:100%;aspect-ratio:4/3;}
+video{width:100%;height:100%;display:block;background:#000;border-radius:18px;object-fit:cover;transform:scaleX(-1);}
+.result-image{width:100%;display:none;border-radius:18px;object-fit:cover;}
 .scan-line{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--accent),transparent);animation:scan 2s linear infinite;opacity:.8;z-index:3;}
 @keyframes scan{0%{top:0;opacity:0;}10%{opacity:.8;}90%{opacity:.8;}100%{top:100%;opacity:0;}}
 
-.status{margin-top:16px;padding:14px 20px;border-radius:12px;font-size:14px;font-weight:500;background:var(--glass);border:1px solid var(--border);display:inline-flex;align-items:center;gap:10px;max-width:320px;width:100%;justify-content:center;}
+.status{margin-top:16px;padding:14px 20px;border-radius:12px;font-size:14px;font-weight:500;background:var(--glass);border:1px solid var(--border);display:inline-flex;align-items:center;gap:10px;max-width:380px;width:100%;justify-content:center;}
 .status-dot{width:10px;height:10px;border-radius:50%;background:var(--muted);}
 .status-dot.active{background:var(--accent);animation:blink 1s ease-in-out infinite;}
 .status-dot.success{background:var(--accent);}
@@ -117,40 +122,143 @@ video{width:100%;display:block;background:#000;border-radius:18px;}
 .logout-btn:hover{background:var(--danger);color:white;}
 
 /* ── Admin Tabs ── */
-.admin-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:24px;}
+.admin-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:24px;flex-wrap:wrap;}
 .admin-tab{padding:10px 22px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all .25s;}
 .admin-tab:hover{color:var(--fg);border-color:rgba(255,255,255,.2);}
 .admin-tab.active{background:rgba(255,255,255,.07);color:var(--fg);border-color:rgba(255,255,255,.2);}
 .admin-tab.tab-users.active{color:var(--accent);border-color:var(--accent);box-shadow:0 0 12px -4px var(--accent-glow);}
 .admin-tab.tab-log.active{color:var(--warning);border-color:var(--warning);box-shadow:0 0 12px -4px var(--warning-glow);}
+.admin-tab.tab-violence-log.active{color:var(--danger);border-color:var(--danger);box-shadow:0 0 12px -4px rgba(255,71,87,.4);}
+.admin-tab.tab-drowsy.active{color:var(--purple);border-color:var(--purple);box-shadow:0 0 12px -4px var(--purple-glow);}
 .admin-tab.tab-activity.active{color:var(--info);border-color:var(--info);box-shadow:0 0 12px -4px rgba(0,212,255,.4);}
 .admin-tab-panel{display:none;}.admin-tab-panel.active{display:block;}
 .badge-danger{display:inline-block;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;background:rgba(255,71,87,.15);color:var(--danger);margin-left:6px;}
 .badge-label{display:inline-block;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;background:rgba(255,165,2,.15);color:var(--warning);}
+.badge-purple{display:inline-block;padding:2px 8px;border-radius:6px;font-size:12px;font-weight:600;background:rgba(168,85,247,.15);color:var(--purple);}
 
-/* ── Distraction ── */
-.distraction-stream-wrap{position:relative;margin:24px auto;max-width:560px;border-radius:20px;overflow:hidden;border:2px solid var(--warning);box-shadow:0 0 40px -10px var(--warning-glow);background:#000;display:none;}
-.distraction-stream-wrap img{width:100%;display:block;border-radius:18px;}
-.distraction-stream-wrap .scan-line{background:linear-gradient(90deg,transparent,var(--warning),transparent);}
+/* ── System Selection ── */
+.system-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:36px auto;max-width:700px;}
+.system-card{
+    background:rgba(0,0,0,.3);border-radius:20px;padding:32px 24px;
+    border:2px solid var(--border);cursor:pointer;transition:all .3s;
+}
+.system-card:hover{transform:translateY(-4px);}
+.system-card.safety{border-color:var(--purple);}
+.system-card.safety:hover{border-color:var(--accent);box-shadow:0 0 40px -10px var(--accent-glow);}
+.system-card.violence{border-color:var(--danger);}
+.system-card.violence:hover{border-color:var(--danger);box-shadow:0 0 40px -10px rgba(255,71,87,.4);}
+.system-card h3{font-size:1.2rem;margin-bottom:10px;}
+.system-card .icon{font-size:48px;margin-bottom:16px;}
+.system-card .desc{color:var(--muted);font-size:14px;line-height:1.5;}
 
-.alert-banner{display:none;align-items:center;gap:12px;margin:16px auto;max-width:560px;padding:16px 24px;border-radius:14px;background:rgba(255,71,87,.15);border:1px solid var(--danger);color:var(--danger);font-size:15px;font-weight:600;animation:alertPop .4s cubic-bezier(.16,1,.3,1);}
+/* ── Dual Stream Layout ── */
+.dual-streams{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin:24px auto;
+    max-width:1060px;
+}
+
+.stream-panel{
+    background:rgba(0,0,0,.25);
+    border-radius:20px;
+    padding:16px;
+    border:2px solid var(--border);
+    display:none;
+}
+.stream-panel.active{display:block;}
+
+.stream-panel.distraction-panel{
+    border-color:var(--warning);
+    box-shadow:0 0 30px -10px var(--warning-glow);
+}
+.stream-panel.drowsiness-panel{
+    border-color:var(--purple);
+    box-shadow:0 0 30px -10px var(--purple-glow);
+}
+
+.stream-panel h3{
+    font-size:15px;font-weight:700;margin-bottom:12px;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.distraction-panel h3{color:var(--warning);}
+.drowsiness-panel h3{color:var(--purple);}
+
+.stream-wrap{
+    position:relative;
+    border-radius:16px;
+    overflow:hidden;
+    background:#000;
+}
+.stream-wrap img{width:100%;display:block;border-radius:14px;}
+.stream-wrap .scan-line{background:linear-gradient(90deg,transparent,var(--warning),transparent);}
+.drowsiness-panel .stream-wrap .scan-line{background:linear-gradient(90deg,transparent,var(--purple),transparent);}
+
+/* ── Metrics (shared) ── */
+.metrics-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:12px;
+}
+.metric-box{
+    background:rgba(0,0,0,.35);
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:10px 8px;
+    text-align:center;
+}
+.metric-box .metric-val{
+    font-size:18px;font-weight:800;
+    display:block;
+}
+.metric-box .metric-label{
+    font-size:10px;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.5px;
+    margin-top:2px;display:block;
+}
+.metric-val.good{color:var(--accent);}
+.metric-val.warn{color:var(--warning);}
+.metric-val.bad{color:var(--danger);}
+
+/* ── Violence Page ── */
+.violence-stream-container{
+    margin:24px auto;
+    max-width:680px;
+}
+.violence-stream-wrap{
+    position:relative;
+    border-radius:20px;
+    overflow:hidden;
+    background:#000;
+    border:2px solid var(--danger);
+    box-shadow:0 0 30px -10px rgba(255,71,87,.4);
+}
+.violence-stream-wrap img{width:100%;display:block;border-radius:18px;}
+.violence-metrics{margin-top:12px;}
+.violence-metrics .metrics-grid{max-width:680px;margin:0 auto;}
+
+/* ── Alert Banners ── */
+.alert-banner{display:none;align-items:center;gap:12px;margin:16px auto;max-width:560px;padding:16px 24px;border-radius:14px;font-size:15px;font-weight:600;animation:alertPop .4s cubic-bezier(.16,1,.3,1);}
 .alert-banner.show{display:flex;}
+.alert-banner.distraction-alert{background:rgba(255,71,87,.15);border:1px solid var(--danger);color:var(--danger);}
+.alert-banner.drowsiness-alert{background:rgba(168,85,247,.15);border:1px solid var(--purple);color:var(--purple);}
+.alert-banner.violence-alert{background:rgba(232,65,24,.15);border:1px solid var(--red-deep);color:var(--red-deep);}
 @keyframes alertPop{from{opacity:0;transform:scale(.95);}to{opacity:1;transform:scale(1);}}
 .alert-icon{font-size:24px;animation:shake .5s ease-in-out;}
 @keyframes shake{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
 
-.detection-log{max-width:560px;margin:16px auto 0;text-align:left;max-height:160px;overflow-y:auto;border-radius:12px;background:rgba(0,0,0,.3);border:1px solid var(--border);padding:12px 16px;font-size:13px;color:var(--muted);display:none;}
+.detection-log{max-width:1060px;margin:16px auto 0;text-align:left;max-height:160px;overflow-y:auto;border-radius:12px;background:rgba(0,0,0,.3);border:1px solid var(--border);padding:12px 16px;font-size:13px;color:var(--muted);display:none;}
 .detection-log.show{display:block;}
 .log-entry{padding:4px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
 .log-entry:last-child{border-bottom:none;}
 .log-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.log-dot.ok{background:var(--accent);}.log-dot.bad{background:var(--danger);}
+.log-dot.ok{background:var(--accent);}.log-dot.bad{background:var(--danger);}.log-dot.purple{background:var(--purple);}
 
 .distraction-controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px;}
 
-/* ══════════════════════════════════════════════════
-   SIDE NOTIFICATION BAR
-   ══════════════════════════════════════════════════ */
+/* ═══ Side Notification Bar ═══ */
 #sideNotifBar{
     position:fixed;top:16px;right:16px;bottom:16px;
     width:340px;max-width:90vw;
@@ -166,92 +274,46 @@ video{width:100%;display:block;background:#000;border-radius:18px;}
     overflow:hidden;
 }
 #sideNotifBar.open{transform:translateX(0);}
-
-#sideNotifBar .bar-header{
-    padding:18px 20px 14px;
-    border-bottom:1px solid var(--border);
-    display:flex;align-items:center;justify-content:space-between;
-    flex-shrink:0;
-}
-#sideNotifBar .bar-header h3{
-    font-size:15px;font-weight:700;color:var(--fg);
-    display:flex;align-items:center;gap:8px;
-}
-#sideNotifBar .bar-header .header-actions{
-    display:flex;align-items:center;gap:6px;
-}
-#sideNotifBar .bar-header .close-bar{
-    background:none;border:none;color:var(--muted);font-size:20px;
-    cursor:pointer;padding:4px 8px;border-radius:8px;transition:.2s;
-}
+#sideNotifBar .bar-header{padding:18px 20px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+#sideNotifBar .bar-header h3{font-size:15px;font-weight:700;color:var(--fg);display:flex;align-items:center;gap:8px;}
+#sideNotifBar .bar-header .header-actions{display:flex;align-items:center;gap:6px;}
+#sideNotifBar .bar-header .close-bar{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 8px;border-radius:8px;transition:.2s;}
 #sideNotifBar .bar-header .close-bar:hover{color:var(--fg);background:rgba(255,255,255,.06);}
-#sideNotifBar .bar-header .clear-bar{
-    background:transparent;border:1px solid var(--border);color:var(--muted);font-size:11px;
-    cursor:pointer;padding:4px 10px;border-radius:8px;transition:.2s;font-family:inherit;
-}
+#sideNotifBar .bar-header .clear-bar{background:transparent;border:1px solid var(--border);color:var(--muted);font-size:11px;cursor:pointer;padding:4px 10px;border-radius:8px;transition:.2s;font-family:inherit;}
 #sideNotifBar .bar-header .clear-bar:hover{color:var(--danger);border-color:var(--danger);background:rgba(255,71,87,.08);}
-
-#sideNotifBar .bar-body{
-    flex:1;overflow-y:auto;padding:8px 0;
-}
+#sideNotifBar .bar-body{flex:1;overflow-y:auto;padding:8px 0;}
 #sideNotifBar .bar-body::-webkit-scrollbar{width:4px;}
 #sideNotifBar .bar-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:4px;}
-
-.notif-item{
-    padding:12px 18px;
-    display:flex;align-items:flex-start;gap:12px;
-    border-bottom:1px solid rgba(255,255,255,.04);
-    animation:notifSlide .3s ease-out;
-    transition:background .15s;
-}
+.notif-item{padding:12px 18px;display:flex;align-items:flex-start;gap:12px;border-bottom:1px solid rgba(255,255,255,.04);animation:notifSlide .3s ease-out;transition:background .15s;}
 .notif-item:hover{background:rgba(255,255,255,.03);}
 @keyframes notifSlide{from{opacity:0;transform:translateX(20px);}to{opacity:1;transform:translateX(0);}}
-
-.notif-icon{
-    width:32px;height:32px;border-radius:10px;
-    display:flex;align-items:center;justify-content:center;
-    font-size:16px;flex-shrink:0;margin-top:2px;
-}
+.notif-icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;margin-top:2px;}
 .notif-icon.warn{background:rgba(255,165,2,.15);color:var(--warning);}
 .notif-icon.danger{background:rgba(255,71,87,.15);color:var(--danger);}
 .notif-icon.ok{background:rgba(0,229,160,.15);color:var(--accent);}
 .notif-icon.info{background:rgba(0,212,255,.15);color:var(--info);}
-
+.notif-icon.purple{background:rgba(168,85,247,.15);color:var(--purple);}
 .notif-content{flex:1;min-width:0;}
 .notif-text{font-size:13px;color:var(--fg);line-height:1.4;word-break:break-word;}
 .notif-time{font-size:11px;color:var(--muted);margin-top:3px;}
-
-#sideNotifBar .bar-empty{
-    padding:40px 20px;text-align:center;color:var(--muted);font-size:13px;
-}
-
-/* Toggle button for the notification bar */
-#notifToggle{
-    position:fixed;top:20px;right:20px;
-    width:48px;height:48px;border-radius:14px;
-    background:var(--card);border:1px solid var(--border);
-    backdrop-filter:blur(12px);
-    display:flex;align-items:center;justify-content:center;
-    cursor:pointer;z-index:999;
-    transition:all .3s;
-    color:var(--fg);font-size:20px;
-    box-shadow:0 4px 20px rgba(0,0,0,.3);
-}
+#sideNotifBar .bar-empty{padding:40px 20px;text-align:center;color:var(--muted);font-size:13px;}
+#notifToggle{position:fixed;top:20px;right:20px;width:48px;height:48px;border-radius:14px;background:var(--card);border:1px solid var(--border);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:999;transition:all .3s;color:var(--fg);font-size:20px;box-shadow:0 4px 20px rgba(0,0,0,.3);}
 #notifToggle:hover{transform:scale(1.05);border-color:rgba(255,255,255,.15);}
-#notifToggle .notif-badge{
-    position:absolute;top:-4px;right:-4px;
-    min-width:20px;height:20px;border-radius:10px;
-    background:var(--danger);color:#fff;font-size:11px;font-weight:700;
-    display:none;align-items:center;justify-content:center;padding:0 6px;
-}
+#notifToggle .notif-badge{position:absolute;top:-4px;right:-4px;min-width:20px;height:20px;border-radius:10px;background:var(--danger);color:#fff;font-size:11px;font-weight:700;display:none;align-items:center;justify-content:center;padding:0 6px;}
 #notifToggle .notif-badge.show{display:flex;}
 
-@media(max-width:600px){
+@media(max-width:768px){
+    .dual-streams{grid-template-columns:1fr;max-width:560px;}
+    .system-cards{grid-template-columns:1fr;max-width:400px;}
     .card{padding:32px 24px;}
     input,select,.btn,.status{max-width:100%;}
     .data-table{font-size:12px;}
-    .distraction-stream-wrap,.alert-banner,.detection-log{max-width:100%;}
+    .metrics-grid{grid-template-columns:repeat(2,1fr);}
     #sideNotifBar{width:100%;max-width:100%;top:0;right:0;bottom:0;border-radius:0;}
+}
+@media(max-width:600px){
+    .dual-streams{gap:12px;}
+    .alert-banner{max-width:100%;}
 }
 </style>
 </head>
@@ -264,13 +326,11 @@ video{width:100%;display:block;background:#000;border-radius:18px;}
     <div class="grid-pattern"></div>
 </div>
 
-<!-- ═══ Notification toggle button ═══ -->
 <button id="notifToggle" onclick="toggleNotifBar()" title="Notifications">
     <span>&#128276;</span>
     <span class="notif-badge" id="notifBadge">0</span>
 </button>
 
-<!-- ═══ Side Notification Bar ═══ -->
 <div id="sideNotifBar">
     <div class="bar-header">
         <h3>&#128276; Live Feed</h3>
@@ -285,7 +345,7 @@ video{width:100%;display:block;background:#000;border-radius:18px;}
 </div>
 
 <div class="container">
-    <!-- HOME -->
+    <!-- ═══ HOME ═══ -->
     <div id="home" class="section card active">
         <div class="logo-section">
             <div class="logo-icon">
@@ -304,25 +364,28 @@ video{width:100%;display:block;background:#000;border-radius:18px;}
         </div>
     </div>
 
-    <!-- LOGIN -->
+    <!-- ═══ LOGIN ═══ -->
     <div id="login" class="section card">
         <h2>Driver Login</h2>
         <div class="input-group">
             <input id="loginName" placeholder="Enter your name" type="text">
-            <button class="btn btn-login" onclick="startLogin()">Start Face Scan</button>
+            <button class="btn btn-login" id="loginStartBtn" onclick="startLoginCamera()">Start Face Scan</button>
         </div>
         <div class="video-container" id="loginVideoContainer" style="display:none">
             <div class="video-frame">
                 <img id="loginResultImage" class="result-image">
-                <video id="videoLogin" autoplay playsinline></video>
-                <div class="scan-line"></div>
+                <video id="videoLogin" autoplay playsinline muted></video>
+                <div class="scan-line" id="loginScanLine"></div>
             </div>
         </div>
+        <div style="margin-top:16px;">
+            <button class="btn btn-capture" id="loginCaptureBtn" onclick="captureLogin()" style="max-width:220px;margin:0 auto;">&#128247; Capture Photo</button>
+        </div>
         <div class="status" id="loginStatus"><span class="status-dot"></span><span>Ready</span></div>
-        <button class="btn btn-back" onclick="back()">Back to Menu</button>
+        <button class="btn btn-back" onclick="backFromLogin()">Back to Menu</button>
     </div>
 
-    <!-- REGISTER -->
+    <!-- ═══ REGISTER ═══ -->
     <div id="register" class="section card">
         <h2>Register New Driver</h2>
         <div class="input-group">
@@ -331,45 +394,122 @@ video{width:100%;display:block;background:#000;border-radius:18px;}
                 <option value="camera">Use Camera</option>
                 <option value="upload">Upload Image</option>
             </select>
-            <button class="btn btn-register" onclick="startRegister()">Proceed</button>
+            <button class="btn btn-register" id="regStartBtn" onclick="startRegCamera()">Proceed</button>
         </div>
         <div class="video-container" id="regVideoContainer" style="display:none">
             <div class="video-frame">
                 <img id="regResultImage" class="result-image">
-                <video id="videoReg" autoplay playsinline></video>
-                <div class="scan-line"></div>
+                <video id="videoReg" autoplay playsinline muted></video>
+                <div class="scan-line" id="regScanLine"></div>
             </div>
+        </div>
+        <div style="margin-top:16px;">
+            <button class="btn btn-capture" id="regCaptureBtn" onclick="captureReg()" style="max-width:220px;margin:0 auto;">&#128247; Capture Photo</button>
         </div>
         <div class="file-input-wrapper" id="fileWrapper" style="display:none">
             <input type="file" id="fileInput" accept="image/*">
             <label id="fileLabel" class="file-label">Choose image file</label>
         </div>
         <div class="status" id="regStatus"><span class="status-dot"></span><span>Ready</span></div>
-        <button class="btn btn-back" onclick="back()">Back to Menu</button>
+        <button class="btn btn-back" onclick="backFromRegister()">Back to Menu</button>
     </div>
 
-    <!-- DISTRACTION -->
-    <div id="distraction" class="section card">
-        <h2><span style="color:var(--warning)">&#9888;</span> Driver Distraction Monitor</h2>
-        <p class="subtitle" id="distractionGreeting" style="margin-bottom:20px;">Real-time AI-powered distraction detection</p>
+    <!-- ═══ SYSTEM SELECT (after login) ═══ -->
+    <div id="systemSelect" class="section card">
+        <h2>Choose Monitoring System</h2>
+        <p class="subtitle" id="sysSelectGreeting">Select which system to activate</p>
+        <div class="system-cards">
+            <div class="system-card safety" onclick="startSafetyMonitor()">
+                <div class="icon">&#128737;</div>
+                <h3 style="color:var(--accent)">Driver Safety Monitor</h3>
+                <p class="desc">Distraction + Drowsiness detection using Camera 0</p>
+            </div>
+            <div class="system-card violence" onclick="startViolenceMonitor()">
+                <div class="icon">🛡️</div>
+                <h3 style="color:var(--danger)">Violence & Weapon Detection</h3>
+                <p class="desc">Real-time violence and weapon detection using Camera 1</p>
+            </div>
+        </div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;">
+            <button class="btn btn-back" onclick="reLogin()" style="max-width:220px;color:var(--info);border-color:var(--info);">&#128260; Login as Another Driver</button>
+            <button class="btn btn-back" onclick="back()">&#9664; Main Menu</button>
+        </div>
+    </div>
 
-        <div class="alert-banner" id="alertBanner">
+    <!-- ═══ SAFETY MONITOR (Distraction + Drowsiness) ═══ -->
+    <div id="distraction" class="section card">
+        <h2><span style="color:var(--warning)">&#9888;</span> Driver Safety Monitor</h2>
+        <p class="subtitle" id="distractionGreeting" style="margin-bottom:20px;">Real-time AI-powered safety monitoring</p>
+
+        <div class="alert-banner distraction-alert" id="distractionAlertBanner">
             <span class="alert-icon">&#128680;</span>
-            <span id="alertText">Distraction detected!</span>
+            <span id="distractionAlertText">Distraction detected!</span>
+        </div>
+        <div class="alert-banner drowsiness-alert" id="drowsinessAlertBanner">
+            <span class="alert-icon">&#128564;</span>
+            <span id="drowsinessAlertText">Drowsiness detected!</span>
         </div>
 
-        <div class="distraction-stream-wrap" id="distractionStreamWrap">
-            <img id="distractionStream" src="" alt="Live Feed">
-            <div class="scan-line"></div>
+        <div class="dual-streams" id="dualStreams">
+            <div class="stream-panel distraction-panel" id="distractionPanel">
+                <h3>&#9888; Distraction Detection</h3>
+                <div class="stream-wrap">
+                    <img id="distractionStream" src="" alt="Distraction Feed">
+                    <div class="scan-line"></div>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <span class="metric-val good" id="distMetricStatus">Safe</span>
+                        <span class="metric-label">Status</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-val good" id="distMetricDet">None</span>
+                        <span class="metric-label">Detection</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-val good" id="distMetricConf">0%</span>
+                        <span class="metric-label">Confidence</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-val good" id="distMetricFrames">0</span>
+                        <span class="metric-label">Consec.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="stream-panel drowsiness-panel" id="drowsinessPanel">
+                <h3>&#128564; Drowsiness Detection</h3>
+                <div class="stream-wrap">
+                    <img id="drowsinessStream" src="" alt="Drowsiness Feed">
+                    <div class="scan-line"></div>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <span class="metric-val good" id="metricEar">0.000</span>
+                        <span class="metric-label">EAR</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-val good" id="metricMar">0.000</span>
+                        <span class="metric-label">MAR</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-val good" id="metricPerclos">0%</span>
+                        <span class="metric-label">PERCLOS</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-val good" id="metricYawns">0</span>
+                        <span class="metric-label">Yawns</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="distraction-controls">
-            <button class="btn btn-distraction" id="startBtn" onclick="startDistraction()" style="max-width:180px;">&#9654; Start Monitor</button>
-            <button class="btn btn-danger-outline" id="stopBtn" onclick="stopDistraction()" style="max-width:180px;display:none;">&#9632; Stop</button>
+            <button class="btn btn-distraction" id="startBtn" onclick="startBothMonitors()" style="max-width:220px;">&#9654; Start Safety Monitor</button>
+            <button class="btn btn-danger-outline" id="stopBtn" onclick="stopSafetyMonitor()" style="max-width:220px;display:none;">&#9632; Stop</button>
         </div>
 
         <div class="status" id="distractionStatus" style="margin-top:20px;">
-            <span class="status-dot"></span><span>Ready — click Start Monitor</span>
+            <span class="status-dot"></span><span>Ready</span>
         </div>
 
         <div class="detection-log" id="detectionLog">
@@ -378,12 +518,68 @@ video{width:100%;display:block;background:#000;border-radius:18px;}
         </div>
 
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px;">
-            <button class="btn btn-back" onclick="back()" style="max-width:180px;">&#9664; Main Menu</button>
-            <button class="btn btn-back" onclick="reLogin()" style="max-width:200px;color:var(--info);border-color:var(--info);">&#128260; Login as Another Driver</button>
+            <button class="btn btn-back" onclick="backToSystemSelect()" style="max-width:200px;">&#9664; Systems</button>
+            <button class="btn btn-back" onclick="reLogin()" style="max-width:220px;color:var(--info);border-color:var(--info);">&#128260; Login as Another Driver</button>
         </div>
     </div>
 
-    <!-- ADMIN -->
+    <!-- ═══ VIOLENCE MONITOR ═══ -->
+    <div id="violenceMonitor" class="section card">
+        <h2><span style="color:var(--danger)">🛡️</span> Violence & Weapon Detection</h2>
+        <p class="subtitle" id="violenceGreeting" style="margin-bottom:20px;">Real-time violence and weapon monitoring</p>
+
+        <div class="alert-banner violence-alert" id="violenceAlertBanner">
+            <span class="alert-icon">&#128680;</span>
+            <span id="violenceAlertText">Threat detected!</span>
+        </div>
+
+        <div class="violence-stream-container">
+            <div class="violence-stream-wrap">
+                <img id="violenceStream" src="" alt="Violence Feed">
+            </div>
+            <div class="violence-metrics">
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <span class="metric-val good" id="vwMetricThreat">NORMAL</span>
+                        <span class="metric-label">Threat</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-val good" id="vwMetricViolence">0.00</span>
+                        <span class="metric-label">Violence</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-val good" id="vwMetricWeapons">0</span>
+                        <span class="metric-label">Weapons</span>
+                    </div>
+                    <div class="metric-box">
+                        <span class="metric-val good" id="vwMetricFPS">0</span>
+                        <span class="metric-label">FPS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="distraction-controls">
+            <button class="btn btn-violence" id="vwStartBtn" onclick="startViolenceStream()" style="max-width:220px;">&#9654; Start Violence Monitor</button>
+            <button class="btn btn-danger-outline" id="vwStopBtn" onclick="stopViolenceStream()" style="max-width:220px;display:none;">&#9632; Stop</button>
+        </div>
+
+        <div class="status" id="violenceStatus" style="margin-top:20px;">
+            <span class="status-dot"></span><span>Ready</span>
+        </div>
+
+        <div class="detection-log" id="violenceLog">
+            <div style="color:var(--fg);font-weight:600;margin-bottom:8px;">Threat Log</div>
+            <div id="violenceLogEntries"></div>
+        </div>
+
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px;">
+            <button class="btn btn-back" onclick="backToSystemSelect()" style="max-width:200px;">&#9664; Systems</button>
+            <button class="btn btn-back" onclick="reLogin()" style="max-width:220px;color:var(--info);border-color:var(--info);">&#128260; Login as Another Driver</button>
+        </div>
+    </div>
+
+    <!-- ═══ ADMIN ═══ -->
     <div id="admin" class="section card">
         <h2>Admin Panel</h2>
         <div id="adminLoginUI">
@@ -400,37 +596,46 @@ video{width:100%;display:block;background:#000;border-radius:18px;}
             </div>
             <div class="admin-tabs">
                 <button class="admin-tab tab-users active" onclick="switchAdminTab('users')">&#128100; Users</button>
-                <button class="admin-tab tab-log" onclick="switchAdminTab('log')">&#9888; Distraction Log</button>
-                <button class="admin-tab tab-activity" onclick="switchAdminTab('activity')">&#128220; Activity Log</button>
+                <button class="admin-tab tab-log" onclick="switchAdminTab('log')">&#9888; Distraction</button>
+                <button class="admin-tab tab-drowsy" onclick="switchAdminTab('drowsy')">&#128564; Drowsiness</button>
+                <button class="admin-tab tab-violence-log" onclick="switchAdminTab('violence-log')">&#128737; Violence</button>
+                <button class="admin-tab tab-activity" onclick="switchAdminTab('activity')">&#128220; Activity</button>
             </div>
 
             <div class="admin-tab-panel active" id="tabUsers">
-                <table class="data-table">
-                    <thead><tr><th>Name</th><th>Image Path</th><th>Registered At</th></tr></thead>
-                    <tbody id="usersTableBody"></tbody>
-                </table>
+                <table class="data-table"><thead><tr><th>Name</th><th>Image Path</th><th>Registered At</th></tr></thead><tbody id="usersTableBody"></tbody></table>
             </div>
 
             <div class="admin-tab-panel" id="tabLog">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
                     <span style="color:var(--muted);font-size:13px;" id="logCount">Loading...</span>
-                    <button onclick="loadDistractionLog()" style="background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:12px;transition:.3s;">&#8635; Refresh</button>
+                    <button onclick="loadDistractionLog()" style="background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:12px;">&#8635;</button>
                 </div>
-                <table class="data-table">
-                    <thead><tr><th>Driver</th><th>Timestamp</th><th>Detected Objects</th></tr></thead>
-                    <tbody id="distractionLogBody"></tbody>
-                </table>
+                <table class="data-table"><thead><tr><th>Driver</th><th>Timestamp</th><th>Detected Objects</th></tr></thead><tbody id="distractionLogBody"></tbody></table>
+            </div>
+
+            <div class="admin-tab-panel" id="tabDrowsy">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                    <span style="color:var(--muted);font-size:13px;" id="drowLogCount">Loading...</span>
+                    <button onclick="loadDrowsinessLog()" style="background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:12px;">&#8635;</button>
+                </div>
+                <table class="data-table"><thead><tr><th>Driver</th><th>Timestamp</th><th>Alert Type</th><th>Details</th></tr></thead><tbody id="drowsinessLogBody"></tbody></table>
+            </div>
+
+            <div class="admin-tab-panel" id="tabViolenceLog">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+                    <span style="color:var(--muted);font-size:13px;" id="violenceLogCount">Loading...</span>
+                    <button onclick="loadViolenceLog()" style="background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:12px;">&#8635;</button>
+                </div>
+                <table class="data-table"><thead><tr><th>Driver</th><th>Timestamp</th><th>Threat</th><th>Details</th></tr></thead><tbody id="violenceLogBody"></tbody></table>
             </div>
 
             <div class="admin-tab-panel" id="tabActivity">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
                     <span style="color:var(--muted);font-size:13px;" id="actCount">Loading...</span>
-                    <button onclick="loadActivityLog()" style="background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:12px;transition:.3s;">&#8635; Refresh</button>
+                    <button onclick="loadActivityLog()" style="background:transparent;border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:8px;cursor:pointer;font-size:12px;">&#8635;</button>
                 </div>
-                <table class="data-table">
-                    <thead><tr><th>User</th><th>Action</th><th>Details</th><th>Timestamp</th></tr></thead>
-                    <tbody id="activityLogBody"></tbody>
-                </table>
+                <table class="data-table"><thead><tr><th>User</th><th>Action</th><th>Details</th><th>Timestamp</th></tr></thead><tbody id="activityLogBody"></tbody></table>
             </div>
         </div>
         <button class="btn btn-back" onclick="back()">Back to Menu</button>
@@ -438,55 +643,53 @@ video{width:100%;display:block;background:#000;border-radius:18px;}
 </div>
 
 <script>
-const API_URL = "http://127.0.0.1:5000";
-let stream = null;
-let distractionActive = false;
+const API = "http://127.0.0.1:5000";
 let currentUser = "";
-let _pollTimer = null;
-let _alertCooldown = false;
-let _notifCount = 0;
-let _notifBarOpen = false;
-let _lastDistractedState = false;
+let _pollTimer = null, _drowsyPollTimer = null, _vwPollTimer = null;
+let _alertCooldown = false, _drowsyAlertCooldown = false, _vwAlertCooldown = false;
+let _notifCount = 0, _notifBarOpen = false;
+let _lastDistractedState = false, _lastDrowsyAlertState = false, _lastVwAlertState = false;
+let _loginStream = null, _regStream = null;
 
-// ═══════════════════════════════════════
-//  Navigation
-// ═══════════════════════════════════════
+// ═══ Navigation ═══
 function show(id) {
     document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
 }
+
 function back() {
-    stopCamera(); stopDistraction();
+    stopSafetyMonitor();
+    stopViolenceStream();
+    fetch(`${API}/stop_all_cameras`,{method:'POST'}).catch(()=>{});
     show('home'); currentUser = "";
-    document.getElementById('loginVideoContainer').style.display = 'none';
-    document.getElementById('regVideoContainer').style.display = 'none';
+    stopLoginCamera(); stopRegCamera();
     document.getElementById('fileWrapper').style.display = 'none';
     setStatus('loginStatus','Ready','');
     setStatus('regStatus','Ready','');
     document.getElementById('adminLoginUI').style.display = 'block';
     document.getElementById('usersTableContainer').style.display = 'none';
     setStatus('adminStatus','Enter credentials','');
-    document.getElementById('loginResultImage').style.display = 'none';
-    document.getElementById('regResultImage').style.display = 'none';
 }
+
+function backToSystemSelect() {
+    stopSafetyMonitor();
+    stopViolenceStream();
+    fetch(`${API}/stop_all_cameras`,{method:'POST'}).catch(()=>{});
+    show('systemSelect');
+}
+
 function reLogin() {
-    stopDistraction(); currentUser = "";
+    stopSafetyMonitor();
+    stopViolenceStream();
+    fetch(`${API}/stop_all_cameras`,{method:'POST'}).catch(()=>{});
+    currentUser = "";
+    stopLoginCamera();
     document.getElementById('loginName').value = '';
-    document.getElementById('loginVideoContainer').style.display = 'none';
-    document.getElementById('loginResultImage').style.display = 'none';
     setStatus('loginStatus','Ready','');
     show('login');
 }
-function showDistraction() {
-    show('distraction');
-    const g = document.getElementById('distractionGreeting');
-    if (g) g.textContent = `Welcome, ${currentUser} — monitoring active`;
-    startDistraction();
-}
 
-// ═══════════════════════════════════════
-//  Helpers
-// ═══════════════════════════════════════
+// ═══ Helpers ═══
 function setStatus(id, text, type) {
     const el = document.getElementById(id);
     el.querySelector('span:last-child').textContent = text;
@@ -495,121 +698,200 @@ function setStatus(id, text, type) {
     if (type) dot.classList.add(type);
 }
 function cleanBase64(s) { return s.includes(',') ? s.split(',')[1] : s; }
-function nowTimestamp() { return new Date().toLocaleString('en-EG', {hour12:false}); }
 function shortTime() { return new Date().toLocaleTimeString('en-EG', {hour12:false}); }
 
-// ═══════════════════════════════════════
-//  Camera
-// ═══════════════════════════════════════
-function stopCamera() { if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; } }
-function startCamera(videoId) {
-    return new Promise(resolve => {
-        const v = document.getElementById(videoId);
-        navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}})
-            .then(s => { stream = s; v.srcObject = stream; v.onloadeddata = () => resolve(true); })
-            .catch(() => resolve(false));
-    });
-}
-function captureFrame(videoId) {
-    const v = document.getElementById(videoId);
-    if (!v || v.videoWidth === 0) return null;
-    const c = document.createElement('canvas');
-    c.width = v.videoWidth; c.height = v.videoHeight;
-    c.getContext('2d').drawImage(v, 0, 0);
-    return c.toDataURL('image/jpeg');
+// ═══ Camera helpers (getUserMedia) ═══
+function stopLoginCamera() {
+    if (_loginStream) { _loginStream.getTracks().forEach(t => t.stop()); _loginStream = null; }
+    document.getElementById('loginVideoContainer').style.display = 'none';
+    document.getElementById('loginResultImage').style.display = 'none';
+    document.getElementById('loginCaptureBtn').style.display = 'none';
+    document.getElementById('loginStartBtn').style.display = 'flex';
 }
 
-// ═══════════════════════════════════════
-//  Response handler
-// ═══════════════════════════════════════
-function handleResponse(data, vcId, imgId, statusId) {
-    if (data.processed_image) {
-        const ri = document.getElementById(imgId);
-        ri.src = 'data:image/jpeg;base64,' + data.processed_image;
-        ri.style.display = 'block';
-        document.getElementById(vcId).querySelector('video').style.display = 'none';
-        document.getElementById(vcId).querySelector('.scan-line').style.display = 'none';
-    }
-    if (data.success) {
-        setStatus(statusId, data.message, 'success');
-        stopCamera();
-        if (statusId === 'loginStatus') {
-            setTimeout(async () => {
-                currentUser = document.getElementById('loginName').value.trim();
-                // Tell backend who the active driver is for logging
-                try {
-                    await fetch(`${API_URL}/set_driver`, {
-                        method: 'POST',
-                        headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({name: currentUser})
-                    });
-                } catch {}
-                showDistraction();
-            }, 1200);
-        } else {
-            setTimeout(back, 2500);
-        }
-    } else {
-        setStatus(statusId, data.message, 'error');
-        stopCamera();
-    }
+function stopRegCamera() {
+    if (_regStream) { _regStream.getTracks().forEach(t => t.stop()); _regStream = null; }
+    document.getElementById('regVideoContainer').style.display = 'none';
+    document.getElementById('regResultImage').style.display = 'none';
+    document.getElementById('regCaptureBtn').style.display = 'none';
+    document.getElementById('regStartBtn').style.display = 'flex';
 }
 
-// ═══════════════════════════════════════
-//  Login
-// ═══════════════════════════════════════
-async function startLogin() {
+function backFromLogin() { stopLoginCamera(); setStatus('loginStatus','Ready',''); show('home'); }
+function backFromRegister() { stopRegCamera(); setStatus('regStatus','Ready',''); document.getElementById('fileWrapper').style.display='none'; show('home'); }
+
+function captureFrameFromVideo(videoEl) {
+    const canvas = document.createElement('canvas');
+    canvas.width = videoEl.videoWidth || 640;
+    canvas.height = videoEl.videoHeight || 480;
+    canvas.getContext('2d').drawImage(videoEl, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL('image/jpeg', 0.9).split(',')[1];
+}
+
+// ═══ LOGIN (getUserMedia — smooth live preview) ═══
+async function startLoginCamera() {
     const name = document.getElementById('loginName').value.trim();
     if (!name) return setStatus('loginStatus','Enter your name','error');
-    setStatus('loginStatus','Starting camera...','active');
-    const ok = await startCamera('videoLogin');
-    if (ok) {
-        document.getElementById('loginVideoContainer').style.display = 'block';
-        document.getElementById('loginResultImage').style.display = 'none';
-        document.getElementById('videoLogin').style.display = 'block';
-        document.querySelector('#loginVideoContainer .scan-line').style.display = 'block';
-        setStatus('loginStatus','Capturing...','active');
-        setTimeout(async () => {
-            const img = captureFrame('videoLogin');
-            if (!img) { setStatus('loginStatus','Camera error','error'); return stopCamera(); }
-            setStatus('loginStatus','Verifying...','active');
-            try {
-                const r = await fetch(`${API_URL}/login`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,image:cleanBase64(img)})});
-                handleResponse(await r.json(),'loginVideoContainer','loginResultImage','loginStatus');
-            } catch { setStatus('loginStatus','Server error','error'); stopCamera(); }
-        }, 800);
-    } else { setStatus('loginStatus','Camera denied','error'); }
+
+    setStatus('loginStatus','Opening camera...','active');
+    document.getElementById('loginStartBtn').style.display = 'none';
+    document.getElementById('loginVideoContainer').style.display = 'block';
+    document.getElementById('loginResultImage').style.display = 'none';
+    document.getElementById('loginCaptureBtn').style.display = 'none';
+    document.getElementById('loginScanLine').style.display = 'block';
+
+    try {
+        _loginStream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode:'user', width:{ideal:640}, height:{ideal:480} }
+        });
+        const video = document.getElementById('videoLogin');
+        video.srcObject = _loginStream;
+        await video.play();
+        setStatus('loginStatus','Camera ready — click Capture','success');
+
+        // Show capture button after 2 seconds
+        setTimeout(() => {
+            document.getElementById('loginCaptureBtn').style.display = 'flex';
+        }, 2000);
+    } catch(e) {
+        console.error(e);
+        setStatus('loginStatus','Camera access denied','error');
+        document.getElementById('loginStartBtn').style.display = 'flex';
+        document.getElementById('loginVideoContainer').style.display = 'none';
+    }
 }
 
-// ═══════════════════════════════════════
-//  Register
-// ═══════════════════════════════════════
-async function startRegister() {
+async function captureLogin() {
+    const name = document.getElementById('loginName').value.trim();
+    if (!name) return;
+
+    const video = document.getElementById('videoLogin');
+    if (!video.srcObject) return setStatus('loginStatus','Camera not ready','error');
+
+    setStatus('loginStatus','Capturing...','active');
+    document.getElementById('loginCaptureBtn').style.display = 'none';
+    document.getElementById('loginScanLine').style.display = 'none';
+
+    // Small delay to ensure a good frame
+    await new Promise(r => setTimeout(r, 300));
+
+    const image = captureFrameFromVideo(video);
+    stopLoginCamera();
+
+    // Show captured image
+    const ri = document.getElementById('loginResultImage');
+    ri.src = 'data:image/jpeg;base64,' + image;
+    ri.style.display = 'block';
+    document.getElementById('loginVideoContainer').style.display = 'block';
+
+    setStatus('loginStatus','Verifying...','active');
+    try {
+        const r = await fetch(`${API}/login`,{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({name,image})
+        });
+        const data = await r.json();
+        if (data.processed_image) {
+            ri.src = 'data:image/jpeg;base64,' + data.processed_image;
+            ri.style.display = 'block';
+        }
+        if (data.success) {
+            setStatus('loginStatus', data.message, 'success');
+            setTimeout(async () => {
+                currentUser = name;
+                try { await fetch(`${API}/set_driver`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:currentUser})}); } catch{}
+                show('systemSelect');
+                document.getElementById('sysSelectGreeting').textContent = `Welcome, ${currentUser} — select a system`;
+                addNotification('ok','Login successful',`Welcome ${currentUser}`);
+            }, 2000);
+        } else {
+            setStatus('loginStatus', data.message, 'error');
+            document.getElementById('loginStartBtn').style.display = 'flex';
+        }
+    } catch { setStatus('loginStatus','Server error','error'); document.getElementById('loginStartBtn').style.display = 'flex'; }
+}
+
+// ═══ REGISTER (getUserMedia) ═══
+async function startRegCamera() {
     const name = document.getElementById('regName').value.trim();
     const type = document.getElementById('regType').value;
     if (!name) return setStatus('regStatus','Enter name','error');
-    if (type === 'camera') {
-        setStatus('regStatus','Starting camera...','active');
-        const ok = await startCamera('videoReg');
-        if (ok) {
-            document.getElementById('regVideoContainer').style.display = 'block';
-            document.getElementById('fileWrapper').style.display = 'none';
-            document.getElementById('regResultImage').style.display = 'none';
-            document.getElementById('videoReg').style.display = 'block';
-            document.querySelector('#regVideoContainer .scan-line').style.display = 'block';
-            setStatus('regStatus','Capturing...','active');
-            setTimeout(async () => {
-                const img = captureFrame('videoReg');
-                if (!img) { setStatus('regStatus','Capture failed','error'); return stopCamera(); }
-                await sendRegister(name, cleanBase64(img));
-            }, 800);
-        } else { setStatus('regStatus','Camera denied','error'); }
-    } else {
+
+    if (type === 'upload') {
+        stopRegCamera();
         document.getElementById('regVideoContainer').style.display = 'none';
         document.getElementById('fileWrapper').style.display = 'block';
         setStatus('regStatus','Select a file','');
+        return;
+    }
+
+    setStatus('regStatus','Opening camera...','active');
+    document.getElementById('regStartBtn').style.display = 'none';
+    document.getElementById('regVideoContainer').style.display = 'block';
+    document.getElementById('regResultImage').style.display = 'none';
+    document.getElementById('regCaptureBtn').style.display = 'none';
+    document.getElementById('regScanLine').style.display = 'block';
+    document.getElementById('fileWrapper').style.display = 'none';
+
+    try {
+        _regStream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode:'user', width:{ideal:640}, height:{ideal:480} }
+        });
+        const video = document.getElementById('videoReg');
+        video.srcObject = _regStream;
+        await video.play();
+        setStatus('regStatus','Camera ready — click Capture','success');
+        setTimeout(() => {
+            document.getElementById('regCaptureBtn').style.display = 'flex';
+        }, 2000);
+    } catch(e) {
+        console.error(e);
+        setStatus('regStatus','Camera access denied','error');
+        document.getElementById('regStartBtn').style.display = 'flex';
+        document.getElementById('regVideoContainer').style.display = 'none';
     }
 }
+
+async function captureReg() {
+    const name = document.getElementById('regName').value.trim();
+    if (!name) return;
+
+    const video = document.getElementById('videoReg');
+    if (!video.srcObject) return setStatus('regStatus','Camera not ready','error');
+
+    setStatus('regStatus','Capturing...','active');
+    document.getElementById('regCaptureBtn').style.display = 'none';
+    document.getElementById('regScanLine').style.display = 'none';
+    await new Promise(r => setTimeout(r, 300));
+
+    const image = captureFrameFromVideo(video);
+    stopRegCamera();
+
+    const ri = document.getElementById('regResultImage');
+    ri.src = 'data:image/jpeg;base64,' + image;
+    ri.style.display = 'block';
+    document.getElementById('regVideoContainer').style.display = 'block';
+
+    setStatus('regStatus','Registering...','active');
+    try {
+        const r = await fetch(`${API}/register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,image})});
+        const data = await r.json();
+        if (data.processed_image) {
+            ri.src = 'data:image/jpeg;base64,' + data.processed_image;
+            ri.style.display = 'block';
+        }
+        if (data.success) {
+            setStatus('regStatus', data.message, 'success');
+            addNotification('ok','Registered',`${name} registered successfully`);
+            setTimeout(backFromRegister, 2500);
+        } else {
+            setStatus('regStatus', data.message, 'error');
+            document.getElementById('regStartBtn').style.display = 'flex';
+        }
+    } catch { setStatus('regStatus','Server error','error'); document.getElementById('regStartBtn').style.display = 'flex'; }
+}
+
 document.getElementById('fileInput').addEventListener('change', function(e) {
     const name = document.getElementById('regName').value.trim();
     if (!name) return;
@@ -618,38 +900,55 @@ document.getElementById('fileInput').addEventListener('change', function(e) {
         document.getElementById('fileLabel').textContent = file.name;
         setStatus('regStatus','Processing...','active');
         const reader = new FileReader();
-        reader.onload = async (ev) => { await sendRegister(name, cleanBase64(ev.target.result)); };
+        reader.onload = async (ev) => {
+            const image = cleanBase64(ev.target.result);
+            try {
+                const r = await fetch(`${API}/register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,image})});
+                const data = await r.json();
+                if (data.processed_image) {
+                    const ri = document.getElementById('regResultImage');
+                    ri.src = 'data:image/jpeg;base64,' + data.processed_image;
+                    ri.style.display = 'block';
+                    document.getElementById('regVideoContainer').style.display = 'block';
+                }
+                if (data.success) { setStatus('regStatus', data.message, 'success'); setTimeout(backFromRegister, 2500); }
+                else { setStatus('regStatus', data.message, 'error'); }
+            } catch { setStatus('regStatus','Server error','error'); }
+        };
         reader.readAsDataURL(file);
     }
 });
-async function sendRegister(name, image) {
-    try {
-        const r = await fetch(`${API_URL}/register`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,image})});
-        handleResponse(await r.json(),'regVideoContainer','regResultImage','regStatus');
-    } catch { setStatus('regStatus','Server error','error'); stopCamera(); }
+
+// ═══ System Selection ═══
+function startSafetyMonitor() {
+    show('distraction');
+    const g = document.getElementById('distractionGreeting');
+    if (g) g.textContent = `Welcome, ${currentUser} — dual monitoring active`;
+    setTimeout(() => startBothMonitors(), 300);
 }
 
-// ═══════════════════════════════════════
-//  Admin
-// ═══════════════════════════════════════
+function startViolenceMonitor() {
+    show('violenceMonitor');
+    const g = document.getElementById('violenceGreeting');
+    if (g) g.textContent = `Welcome, ${currentUser} — violence monitoring`;
+    setTimeout(() => startViolenceStream(), 300);
+}
+
+// ═══ Admin ═══
 async function checkAdmin() {
     const u = document.getElementById('adminUser').value;
     const p = document.getElementById('adminPass').value;
     if (u === 'admin' && p === 'admin') {
         setStatus('adminStatus','Loading...','active');
         try {
-            const r = await fetch(`${API_URL}/get_users`);
+            const r = await fetch(`${API}/get_users`);
             const users = await r.json();
             document.getElementById('adminLoginUI').style.display = 'none';
             document.getElementById('usersTableContainer').style.display = 'block';
             const tbody = document.getElementById('usersTableBody');
             tbody.innerHTML = '';
             if (!users.length) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center">No users found</td></tr>'; }
-            else users.forEach(u => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `<td>${u.name||'N/A'}</td><td>${u.image_path||'N/A'}</td><td>${u.timestamp||'N/A'}</td>`;
-                tbody.appendChild(tr);
-            });
+            else users.forEach(u => { const tr = document.createElement('tr'); tr.innerHTML = `<td>${u.name||'N/A'}</td><td>${u.image_path||'N/A'}</td><td>${u.timestamp||'N/A'}</td>`; tbody.appendChild(tr); });
         } catch { setStatus('adminStatus','Failed','error'); }
     } else { setStatus('adminStatus','Invalid credentials','error'); }
 }
@@ -661,106 +960,125 @@ function adminLogout() {
 function switchAdminTab(tab) {
     document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.admin-tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelector(`.tab-${tab}`).classList.add('active');
-    const panelId = tab === 'users' ? 'tabUsers' : tab === 'log' ? 'tabLog' : 'tabActivity';
-    document.getElementById(panelId).classList.add('active');
+    const tabMap = {'users':'tabUsers','log':'tabLog','drowsy':'tabDrowsy','violence-log':'tabViolenceLog','activity':'tabActivity'};
+    const tabEl = document.querySelector(`.tab-${tab}`);
+    if (tabEl) tabEl.classList.add('active');
+    const panel = document.getElementById(tabMap[tab]);
+    if (panel) panel.classList.add('active');
     if (tab === 'log') loadDistractionLog();
+    if (tab === 'drowsy') loadDrowsinessLog();
+    if (tab === 'violence-log') loadViolenceLog();
     if (tab === 'activity') loadActivityLog();
 }
 
 async function loadDistractionLog() {
     const tbody = document.getElementById('distractionLogBody');
-    const countEl = document.getElementById('logCount');
+    const cEl = document.getElementById('logCount');
     tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--muted)">Loading...</td></tr>';
     try {
-        const r = await fetch(`${API_URL}/get_distraction_log`);
+        const r = await fetch(`${API}/get_distraction_log`);
         const entries = await r.json();
-        tbody.innerHTML = '';
-        countEl.textContent = `${entries.length} event${entries.length!==1?'s':''}`;
+        tbody.innerHTML = ''; cEl.textContent = `${entries.length} events`;
         if (!entries.length) { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--muted)">No events</td></tr>'; return; }
         entries.forEach(e => {
             const labels = (e.detections||[]).map(d => `<span class="badge-label">${d.label} ${Math.round((d.confidence||0)*100)}%</span>`).join(' ');
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td style="font-weight:600">${e.user||'N/A'}</td><td style="color:var(--muted);font-size:13px;">${e.timestamp||'N/A'}</td><td>${labels||'—'}</td>`;
+            tr.innerHTML = `<td style="font-weight:600">${e.user||'N/A'}</td><td style="color:var(--muted);font-size:13px;">${e.timestamp||''}</td><td>${labels||'—'}</td>`;
             tbody.appendChild(tr);
         });
     } catch { tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--danger)">Failed</td></tr>'; }
 }
 
-async function loadActivityLog() {
-    const tbody = document.getElementById('activityLogBody');
-    const countEl = document.getElementById('actCount');
+async function loadDrowsinessLog() {
+    const tbody = document.getElementById('drowsinessLogBody');
+    const cEl = document.getElementById('drowLogCount');
     tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted)">Loading...</td></tr>';
     try {
-        const r = await fetch(`${API_URL}/get_activity_log`);
+        const r = await fetch(`${API}/get_drowsiness_log`);
         const entries = await r.json();
-        tbody.innerHTML = '';
-        countEl.textContent = `${entries.length} event${entries.length!==1?'s':''}`;
+        tbody.innerHTML = ''; cEl.textContent = `${entries.length} events`;
         if (!entries.length) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted)">No events</td></tr>'; return; }
         entries.forEach(e => {
-            const actionColor = e.action === 'login' ? 'var(--accent)' : e.action === 'distraction' ? 'var(--warning)' : 'var(--info)';
+            const badge = e.alert_type ? `<span class="badge-purple">${e.alert_type}</span>` : '';
             const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td style="font-weight:600">${e.user||'N/A'}</td>
-                <td><span style="color:${actionColor};font-weight:600;text-transform:capitalize">${e.action||'N/A'}</span></td>
-                <td style="font-size:13px;color:var(--muted)">${e.details||'—'}</td>
-                <td style="color:var(--muted);font-size:13px;">${e.timestamp||'N/A'}</td>
-            `;
+            tr.innerHTML = `<td style="font-weight:600">${e.user||'N/A'}</td><td style="color:var(--muted)">${e.timestamp||''}</td><td>${badge}</td><td style="color:var(--muted)">${e.details||''}</td>`;
             tbody.appendChild(tr);
         });
     } catch { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--danger)">Failed</td></tr>'; }
 }
 
-// ═══════════════════════════════════════
-//  Side Notification Bar
-// ═══════════════════════════════════════
+async function loadViolenceLog() {
+    const tbody = document.getElementById('violenceLogBody');
+    const cEl = document.getElementById('violenceLogCount');
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted)">Loading...</td></tr>';
+    try {
+        const r = await fetch(`${API}/get_violence_log`);
+        const entries = await r.json();
+        tbody.innerHTML = ''; cEl.textContent = `${entries.length} events`;
+        if (!entries.length) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted)">No events</td></tr>'; return; }
+        entries.forEach(e => {
+            const badge = `<span class="badge-danger">${e.threat_name||'N/A'}</span>`;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td style="font-weight:600">${e.user||'N/A'}</td><td style="color:var(--muted)">${e.timestamp||''}</td><td>${badge}</td><td style="color:var(--muted)">${e.alert||''}</td>`;
+            tbody.appendChild(tr);
+        });
+    } catch { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--danger)">Failed</td></tr>'; }
+}
+
+async function loadActivityLog() {
+    const tbody = document.getElementById('activityLogBody');
+    const cEl = document.getElementById('actCount');
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted)">Loading...</td></tr>';
+    try {
+        const r = await fetch(`${API}/get_activity_log`);
+        const entries = await r.json();
+        tbody.innerHTML = ''; cEl.textContent = `${entries.length} events`;
+        if (!entries.length) { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--muted)">No events</td></tr>'; return; }
+        entries.forEach(e => {
+            let c = 'var(--info)';
+            if (e.action==='login') c='var(--accent)';
+            else if (e.action==='distraction') c='var(--warning)';
+            else if (e.action==='drowsiness') c='var(--purple)';
+            else if (e.action==='violence_weapon') c='var(--danger)';
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td style="font-weight:600">${e.user||'N/A'}</td><td><span style="color:${c};font-weight:600;text-transform:capitalize">${e.action||'N/A'}</span></td><td style="font-size:13px;color:var(--muted)">${e.details||'—'}</td><td style="color:var(--muted);font-size:13px;">${e.timestamp||''}</td>`;
+            tbody.appendChild(tr);
+        });
+    } catch { tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:var(--danger)">Failed</td></tr>'; }
+}
+
+// ═══ Notifications ═══
 function toggleNotifBar() {
     const bar = document.getElementById('sideNotifBar');
     _notifBarOpen = !_notifBarOpen;
     bar.classList.toggle('open', _notifBarOpen);
-    if (_notifBarOpen) _notifCount = 0, updateBadge();
+    if (_notifBarOpen) { _notifCount = 0; updateBadge(); }
 }
-
 function updateBadge() {
     const b = document.getElementById('notifBadge');
     b.textContent = _notifCount;
     b.classList.toggle('show', _notifCount > 0 && !_notifBarOpen);
 }
-
 function clearNotifications() {
-    const body = document.getElementById('notifBody');
-    body.querySelectorAll('.notif-item').forEach(el => el.remove());
+    document.getElementById('notifBody').querySelectorAll('.notif-item').forEach(el => el.remove());
     const empty = document.getElementById('notifEmpty');
     if (empty) empty.style.display = 'block';
-    _notifCount = 0;
-    updateBadge();
+    _notifCount = 0; updateBadge();
 }
-
 function addNotification(type, title, text) {
     const body = document.getElementById('notifBody');
     const empty = document.getElementById('notifEmpty');
     if (empty) empty.style.display = 'none';
-
-    const icons = {ok:'&#10003;',danger:'&#10007;',warn:'&#9888;',info:'&#8505;'};
+    const icons = {ok:'&#10003;',danger:'&#10007;',warn:'&#9888;',info:'&#8505;',purple:'&#128564;'};
     const div = document.createElement('div');
     div.className = 'notif-item';
-    div.innerHTML = `
-        <div class="notif-icon ${type}">${icons[type]||'&#9679;'}</div>
-        <div class="notif-content">
-            <div class="notif-text"><strong>${title}</strong><br>${text}</div>
-            <div class="notif-time">${shortTime()}</div>
-        </div>
-    `;
+    div.innerHTML = `<div class="notif-icon ${type}">${icons[type]||'&#9679;'}</div><div class="notif-content"><div class="notif-text"><strong>${title}</strong><br>${text}</div><div class="notif-time">${shortTime()}</div></div>`;
     body.prepend(div);
-    // Keep max 50
     while (body.querySelectorAll('.notif-item').length > 50) body.removeChild(body.lastElementChild);
-
     if (!_notifBarOpen) { _notifCount++; updateBadge(); }
 }
 
-// ═══════════════════════════════════════
-//  Distraction Monitor
-// ═══════════════════════════════════════
+// ═══ Alerts & Sound ═══
 function playAlertSound() {
     try {
         const ctx = new (window.AudioContext||window.webkitAudioContext)();
@@ -768,124 +1086,253 @@ function playAlertSound() {
         osc.connect(gain); gain.connect(ctx.destination);
         osc.frequency.setValueAtTime(1000, ctx.currentTime);
         osc.frequency.setValueAtTime(700, ctx.currentTime+0.15);
-        osc.frequency.setValueAtTime(1000, ctx.currentTime+0.3);
         gain.gain.setValueAtTime(0.45, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+0.6);
         osc.start(); osc.stop(ctx.currentTime+0.6);
     } catch {}
 }
 
-function addLogEntry(detections) {
-    const logEl = document.getElementById('detectionLog');
-    const entries = document.getElementById('logEntries');
-    logEl.classList.add('show');
-    const t = shortTime();
-    detections.forEach(d => {
-        if (!d.is_distraction) return;
-        const div = document.createElement('div');
-        div.className = 'log-entry';
-        div.innerHTML = `<span class="log-dot bad"></span>
-            <span style="color:var(--fg)">${d.label}</span>
-            <span style="color:var(--muted);font-size:12px;">${(d.confidence*100).toFixed(0)}%</span>
-            <span style="margin-left:auto;color:var(--muted);font-size:11px;">${t}</span>`;
-        entries.prepend(div);
-        while (entries.children.length > 40) entries.removeChild(entries.lastChild);
-    });
+// ═══ Dual Monitor: Distraction + Drowsiness ═══
+async function _waitForModel(endpoint, label) {
+    for (let i = 0; i < 5; i++) {
+        try { const r = await fetch(`${API}${endpoint}`); const d = await r.json(); if (d.model_loaded) return true; } catch {}
+        setStatus('distractionStatus', `Loading ${label}... (${i+1}/5)`, 'active');
+        await new Promise(r => setTimeout(r, 1500));
+    }
+    return false;
 }
 
-async function startDistraction() {
-    // Show loading state immediately so user knows button was pressed
+async function startBothMonitors() {
     const startBtn = document.getElementById('startBtn');
     startBtn.disabled = true;
-    startBtn.textContent = '⏳ Loading model...';
-    setStatus('distractionStatus', 'Connecting to server...', 'active');
+    startBtn.textContent = 'Loading models...';
+    setStatus('distractionStatus', 'Loading distraction model...', 'active');
 
-    // Retry up to 5 times (model may still be warming up)
-    let loaded = false;
-    for (let attempt = 0; attempt < 5; attempt++) {
-        try {
-            const r = await fetch(`${API_URL}/distraction_status`);
-            const d = await r.json();
-            if (d.model_loaded) { loaded = true; break; }
-            setStatus('distractionStatus', `Loading model... (${attempt+1}/5)`, 'active');
-        } catch {
-            setStatus('distractionStatus', `Retrying... (${attempt+1}/5)`, 'active');
-        }
-        await new Promise(res => setTimeout(res, 1500));
-    }
+    const distOk = await _waitForModel('/distraction_status', 'distraction');
+    if (!distOk) { startBtn.disabled = false; startBtn.textContent = 'Start Safety Monitor'; setStatus('distractionStatus','Distraction model failed','error'); return; }
+
+    setStatus('distractionStatus', 'Loading drowsiness model...', 'active');
+    const drowOk = await _waitForModel('/drowsiness_status', 'drowsiness');
 
     startBtn.disabled = false;
-    startBtn.textContent = '▶ Start Monitor';
+    startBtn.textContent = 'Start Safety Monitor';
 
-    if (!loaded) {
-        setStatus('distractionStatus', 'Cannot reach server or model failed', 'error');
-        return;
+    document.getElementById('distractionPanel').classList.add('active');
+    const distImg = document.getElementById('distractionStream');
+    distImg.src = `${API}/distraction_stream?t=${Date.now()}`;
+    distImg.onerror = () => { setTimeout(() => { if (distImg.src) distImg.src = `${API}/distraction_stream?t=${Date.now()}`; }, 3000); };
+
+    if (drowOk) {
+        document.getElementById('drowsinessPanel').classList.add('active');
+        const drowImg = document.getElementById('drowsinessStream');
+        drowImg.src = `${API}/drowsiness_stream?t=${Date.now()}`;
+        drowImg.onerror = () => { setTimeout(() => { if (drowImg.src) drowImg.src = `${API}/drowsiness_stream?t=${Date.now()}`; }, 3000); };
     }
 
-    distractionActive = true;
-    _lastDistractedState = false;
     startBtn.style.display = 'none';
     document.getElementById('stopBtn').style.display = 'block';
-    document.getElementById('distractionStreamWrap').style.display = 'block';
-    document.getElementById('distractionStream').src = `${API_URL}/distraction_stream?t=${Date.now()}`;
-    setStatus('distractionStatus',`Monitoring ${currentUser||'driver'}...`,'active');
-    addNotification('info','Monitor started',`Tracking ${currentUser||'driver'}`);
+    _lastDistractedState = false; _lastDrowsyAlertState = false;
 
-    // ── Lightweight polling: reads cached state, NO image upload ──
+    const msg = drowOk ? `Dual monitoring ${currentUser}...` : `Distraction only ${currentUser}...`;
+    setStatus('distractionStatus', msg, 'active');
+    addNotification('info', 'Safety monitor started', `Tracking ${currentUser}`);
+
+    // Poll distraction
     _pollTimer = setInterval(async () => {
-        if (!distractionActive) return;
         try {
-            const r = await fetch(`${API_URL}/get_latest_detection`);
+            const r = await fetch(`${API}/get_latest_detection`);
             const data = await r.json();
-            // Only react if state actually changed
-            if (data.distracted && data.detections.length > 0) {
-                const distractedDets = data.detections.filter(d => d.is_distraction);
-                if (distractedDets.length > 0) {
-                    if (!_alertCooldown) {
-                        const labels = distractedDets.map(d => d.label).join(', ');
-                        showAlert(`A ${labels} was detected!`);
+            // Update distraction dashboard
+            const isDist = data.distracted || false;
+            const dets = data.detections || [];
+            const distDets = dets.filter(d => d.is_distraction);
+            const mainDet = dets.find(d => d.label && d.label !== 'Safe Driving');
+
+            document.getElementById('distMetricStatus').textContent = isDist ? 'ALERT' : 'Safe';
+            document.getElementById('distMetricStatus').className = 'metric-val ' + (isDist ? 'bad' : 'good');
+            document.getElementById('distMetricDet').textContent = mainDet ? mainDet.label : 'None';
+            document.getElementById('distMetricDet').className = 'metric-val ' + (mainDet ? 'warn' : 'good');
+            document.getElementById('distMetricConf').textContent = mainDet ? Math.round((mainDet.confidence||0)*100)+'%' : '0%';
+            document.getElementById('distMetricFrames').textContent = data.consecutive || distDets.length || '0';
+
+            if (distDets.length > 0) {
+                if (!_alertCooldown) {
+                    const labels = distDets.map(d => d.label).join(', ');
+                    document.getElementById('distractionAlertBanner').classList.add('show');
+                    document.getElementById('distractionAlertText').textContent = `${labels} detected!`;
+                    playAlertSound();
+                    document.getElementById('dangerOrb').classList.add('active');
+                    addNotification('danger', `${labels}`, `Distraction: ${currentUser}`);
+                    _alertCooldown = true;
+                    setTimeout(() => { _alertCooldown = false; }, 5000);
+                }
+                addLogEntry(distDets, 'distraction');
+                _lastDistractedState = true;
+            } else if (_lastDistractedState) {
+                document.getElementById('distractionAlertBanner').classList.remove('show');
+                _lastDistractedState = false;
+                if (!_lastDrowsyAlertState) document.getElementById('dangerOrb').classList.remove('active');
+            }
+        } catch {}
+    }, 1500);
+
+    // Poll drowsiness
+    if (drowOk) {
+        _drowsyPollTimer = setInterval(async () => {
+            try {
+                const r = await fetch(`${API}/get_latest_drowsiness`);
+                const s = await r.json();
+                document.getElementById('metricEar').textContent = (s.ear||0).toFixed(3);
+                document.getElementById('metricMar').textContent = (s.mar||0).toFixed(3);
+                document.getElementById('metricPerclos').textContent = Math.round((s.perclos||0)*100)+'%';
+                document.getElementById('metricYawns').textContent = s.yawns||0;
+                document.getElementById('metricEar').className = 'metric-val ' + ((s.ear||0) < 0.24 ? 'bad' : 'good');
+                document.getElementById('metricPerclos').className = 'metric-val ' + ((s.perclos||0) >= 0.7 ? 'bad' : (s.perclos||0) > 0.4 ? 'warn' : 'good');
+                document.getElementById('metricYawns').className = 'metric-val ' + ((s.yawns||0) >= 3 ? 'bad' : 'good');
+
+                if (s.alert) {
+                    if (!_drowsyAlertCooldown) {
+                        document.getElementById('drowsinessAlertBanner').classList.add('show');
+                        document.getElementById('drowsinessAlertText').textContent = s.alert;
                         playAlertSound();
                         document.getElementById('dangerOrb').classList.add('active');
-                        addNotification('danger', `${labels.toUpperCase()} detected`, `Distraction alert for ${currentUser||'driver'}`);
-                        _alertCooldown = true;
-                        setTimeout(() => { _alertCooldown = false; }, 5000);
+                        addNotification('purple', s.alert_type||'DROWSY', s.alert);
+                        addLogEntry([{label: s.alert_type||'Drowsiness', confidence:1}], 'drowsiness');
+                        _drowsyAlertCooldown = true;
+                        setTimeout(() => { _drowsyAlertCooldown = false; }, 5000);
                     }
-                    addLogEntry(distractedDets);
-                    _lastDistractedState = true;
+                    _lastDrowsyAlertState = true;
+                } else if (_lastDrowsyAlertState) {
+                    document.getElementById('drowsinessAlertBanner').classList.remove('show');
+                    _lastDrowsyAlertState = false;
+                    if (!_lastDistractedState) document.getElementById('dangerOrb').classList.remove('active');
                 }
-            } else if (_lastDistractedState) {
-                hideAlert();
+            } catch {}
+        }, 1500);
+    }
+}
+
+function stopSafetyMonitor() {
+    clearInterval(_pollTimer); clearInterval(_drowsyPollTimer);
+    _pollTimer = null; _drowsyPollTimer = null;
+    document.getElementById('distractionPanel').classList.remove('active');
+    document.getElementById('drowsinessPanel').classList.remove('active');
+    document.getElementById('distractionStream').src = '';
+    document.getElementById('drowsinessStream').src = '';
+    document.getElementById('startBtn').style.display = 'block';
+    document.getElementById('stopBtn').style.display = 'none';
+    document.getElementById('dangerOrb').classList.remove('active');
+    document.getElementById('distractionAlertBanner').classList.remove('show');
+    document.getElementById('drowsinessAlertBanner').classList.remove('show');
+    setStatus('distractionStatus','Stopped','');
+    ['distMetricStatus','distMetricDet','distMetricConf','distMetricFrames'].forEach(id => {
+        const el = document.getElementById(id);
+        el.textContent = id.includes('Status') ? 'Safe' : id.includes('Det') ? 'None' : '0';
+        el.className = 'metric-val good';
+    });
+    document.getElementById('metricEar').textContent = '0.000';
+    document.getElementById('metricMar').textContent = '0.000';
+    document.getElementById('metricPerclos').textContent = '0%';
+    document.getElementById('metricYawns').textContent = '0';
+    fetch(`${API}/stop_camera`,{method:'POST'}).catch(()=>{});
+}
+
+// ═══ Violence Monitor ═══
+async function startViolenceStream() {
+    const btn = document.getElementById('vwStartBtn');
+    btn.disabled = true;
+    btn.textContent = 'Loading model...';
+    setStatus('violenceStatus', 'Loading violence model...', 'active');
+
+    const ok = await _waitForModel('/violence_weapon_status', 'violence');
+    btn.disabled = false;
+    btn.textContent = 'Start Violence Monitor';
+
+    if (!ok) { setStatus('violenceStatus','Violence model failed','error'); return; }
+
+    const img = document.getElementById('violenceStream');
+    img.src = `${API}/violence_weapon_stream?t=${Date.now()}`;
+    img.onerror = () => { setTimeout(() => { if (img.src) img.src = `${API}/violence_weapon_stream?t=${Date.now()}`; }, 3000); };
+
+    btn.style.display = 'none';
+    document.getElementById('vwStopBtn').style.display = 'block';
+    _lastVwAlertState = false;
+
+    setStatus('violenceStatus', `Violence monitoring ${currentUser}...`, 'active');
+    addNotification('info','Violence monitor started',`Monitoring ${currentUser}`);
+
+    _vwPollTimer = setInterval(async () => {
+        try {
+            const r = await fetch(`${API}/get_latest_violence_weapon`);
+            const s = await r.json();
+            const threat = s.threat_name || 'NORMAL';
+            const vs = s.violence_score || 0;
+            const wc = s.weapon_count || 0;
+
+            document.getElementById('vwMetricThreat').textContent = threat;
+            document.getElementById('vwMetricThreat').className = 'metric-val ' + (s.threat_level >= 2 ? 'bad' : s.threat_level >= 1 ? 'warn' : 'good');
+            document.getElementById('vwMetricViolence').textContent = vs.toFixed(2);
+            document.getElementById('vwMetricViolence').className = 'metric-val ' + (vs > 0.6 ? 'bad' : vs > 0.3 ? 'warn' : 'good');
+            document.getElementById('vwMetricWeapons').textContent = wc;
+            document.getElementById('vwMetricWeapons').className = 'metric-val ' + (wc > 0 ? 'bad' : 'good');
+            document.getElementById('vwMetricFPS').textContent = (s.fps||0).toFixed(0);
+
+            if (s.alert && s.threat_level >= 2) {
+                if (!_vwAlertCooldown) {
+                    document.getElementById('violenceAlertBanner').classList.add('show');
+                    document.getElementById('violenceAlertText').textContent = s.alert;
+                    playAlertSound();
+                    document.getElementById('dangerOrb').classList.add('active');
+                    addNotification('danger', threat, s.alert);
+                    _vwAlertCooldown = true;
+                    setTimeout(() => { _vwAlertCooldown = false; }, 5000);
+                }
+                _lastVwAlertState = true;
+            } else if (_lastVwAlertState) {
+                document.getElementById('violenceAlertBanner').classList.remove('show');
+                _lastVwAlertState = false;
                 document.getElementById('dangerOrb').classList.remove('active');
-                _lastDistractedState = false;
             }
         } catch {}
     }, 1500);
 }
 
-function stopDistraction() {
-    distractionActive = false;
-    clearInterval(_pollTimer);
-    document.getElementById('distractionStreamWrap').style.display = 'none';
-    document.getElementById('distractionStream').src = '';
-    document.getElementById('startBtn').style.display = 'block';
-    document.getElementById('stopBtn').style.display = 'none';
+function stopViolenceStream() {
+    clearInterval(_vwPollTimer); _vwPollTimer = null;
+    document.getElementById('violenceStream').src = '';
+    document.getElementById('vwStartBtn').style.display = 'block';
+    document.getElementById('vwStopBtn').style.display = 'none';
     document.getElementById('dangerOrb').classList.remove('active');
-    hideAlert();
-    setStatus('distractionStatus','Monitoring stopped','');
-    addNotification('info','Monitor stopped','');
+    document.getElementById('violenceAlertBanner').classList.remove('show');
+    setStatus('violenceStatus','Stopped','');
+    ['vwMetricThreat','vwMetricViolence','vwMetricWeapons','vwMetricFPS'].forEach(id => {
+        const el = document.getElementById(id);
+        el.textContent = id.includes('Threat') ? 'NORMAL' : '0';
+        el.className = 'metric-val good';
+    });
+    fetch(`${API}/stop_camera2`,{method:'POST'}).catch(()=>{});
 }
 
-function showAlert(msg) {
-    document.getElementById('alertBanner').classList.add('show');
-    document.getElementById('alertText').textContent = msg;
-    setStatus('distractionStatus','&#9888; '+msg,'warning');
-}
-function hideAlert() {
-    document.getElementById('alertBanner').classList.remove('show');
-    if (distractionActive) setStatus('distractionStatus',`Monitoring ${currentUser||'driver'}...`,'active');
+function addLogEntry(detections, type) {
+    const logEl = document.getElementById('detectionLog');
+    const entries = document.getElementById('logEntries');
+    logEl.classList.add('show');
+    const t = shortTime();
+    const dotClass = type === 'drowsiness' ? 'purple' : 'bad';
+    detections.forEach(d => {
+        const div = document.createElement('div');
+        div.className = 'log-entry';
+        div.innerHTML = `<span class="log-dot ${dotClass}"></span><span>${d.label || d.alert_type || 'Alert'}</span><span style="color:var(--muted);font-size:12px;">${(d.confidence||0)*100>0?(d.confidence*100).toFixed(0)+'%':''}</span><span style="margin-left:auto;color:var(--muted);font-size:11px;">${t}</span>`;
+        entries.prepend(div);
+        while (entries.children.length > 40) entries.removeChild(entries.lastElementChild);
+    });
 }
 
-window.addEventListener('beforeunload', () => { stopCamera(); stopDistraction(); });
+window.addEventListener('beforeunload', () => {
+    stopSafetyMonitor();
+    stopViolenceStream();
+    fetch(`${API}/stop_all_cameras`,{method:'POST'}).catch(()=>{});
+});
 </script>
 </body>
 </html>

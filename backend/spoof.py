@@ -17,9 +17,9 @@ def check_spoof(face_img: np.ndarray) -> bool:
     if face_img is None or face_img.size == 0:
         return False
 
-    # Require minimum crop size to avoid false positives on tiny regions
+
     if face_img.shape[0] < 40 or face_img.shape[1] < 40:
-        return True   # Too small to judge — pass through
+        return True
 
     try:
         gray = cv2.cvtColor(face_img, cv2.COLOR_BGR2GRAY)
@@ -53,4 +53,4 @@ def check_spoof(face_img: np.ndarray) -> bool:
         return True
 
     except Exception:
-        return True   # If check crashes, don't block login
+        return True 

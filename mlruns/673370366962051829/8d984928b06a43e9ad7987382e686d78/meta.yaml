@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/DEPI%20GP/mlruns/673370366962051829/8d984928b06a43e9ad7987382e686d78/artifacts
+end_time: 1778954884672
+entry_point_name: ''
+experiment_id: '673370366962051829'
+lifecycle_stage: active
+run_id: 8d984928b06a43e9ad7987382e686d78
+run_name: efficientnet_driver_distraction_b3
+run_uuid: 8d984928b06a43e9ad7987382e686d78
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1778945147096
+status: 3
+tags: []
+user_id: LAPTOP

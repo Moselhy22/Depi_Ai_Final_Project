@@ -1,0 +1,16 @@
+artifact_uri: file:///D:/DEPI GP/mlruns/965028584436812637/e1f70adae96e488ea8dfebca2e702a8c/artifacts
+deleted_time: 1779199018057
+end_time: 1779063295636
+entry_point_name: ''
+experiment_id: '965028584436812637'
+lifecycle_stage: deleted
+run_id: e1f70adae96e488ea8dfebca2e702a8c
+run_name: mysterious-panda-913
+run_uuid: e1f70adae96e488ea8dfebca2e702a8c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1779063295530
+status: 3
+tags: []
+user_id: LAPTOP
